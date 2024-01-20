@@ -1,6 +1,10 @@
 from scene import *
+import pygame
+import sys
+
+
 class MenuScene(Scene):
-    def __init__(self, screen,scene_man):
+    def __init__(self, screen, scene_man):
         super().__init__(screen)
         self.scene_man = scene_man
 
@@ -12,5 +16,6 @@ class MenuScene(Scene):
 
     def update(self):
         pass
+
     def render(self):
         pass
