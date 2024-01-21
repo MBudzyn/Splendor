@@ -4,4 +4,3 @@ class Token:
         self.color = color
         self.is_universal = is_universal
         self.coordinates = coordinates
-
