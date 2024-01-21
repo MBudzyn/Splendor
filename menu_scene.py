@@ -1,5 +1,5 @@
 from scene import *
-import pygame
+from pygame import *
 import sys
 from stack_of_tokens import *
 
