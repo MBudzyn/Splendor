@@ -15,6 +15,8 @@ class MenuScene(Scene):
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
+            if event.type == pygame.MOUSEBUTTONDOWN:
+                self.stack_of_tokens.click_events()
 
     def update(self):
         pass

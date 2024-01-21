@@ -18,6 +18,13 @@ class StackOfTokens:
         self.actual_stack_image = pygame.image.load(self.graphics_links[self.amount])
         self.actual_stack_image_rect = self.actual_stack_image.get_rect(center=(400, 400))
 
+    def update(self):
+        self.set_image_to_actual()
+    def click_events(self):
+        if self.actual_stack_image_rect.collidepoint(pygame.mouse.get_pos()):
+            self.delete_token()
+            self.update()
+
     def display(self, screen):
         screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
 
