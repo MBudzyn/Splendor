@@ -2,7 +2,6 @@
 from buttons import Buttons
 
 class Card:
-
     def __init__(self, center_coordinates, graphics, alt_graphics, screen,
                  lvl, points, color):
         self.screen = screen
