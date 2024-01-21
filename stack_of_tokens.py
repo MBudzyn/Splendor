@@ -1,5 +1,6 @@
 from token import Token
 import pygame
+
 class StackOfTokens:
     def __init__(self, color, amount, screen, is_universal=False):
         self.color = color
@@ -10,6 +11,8 @@ class StackOfTokens:
         self.max_amount = 7
         self.set_image_to_actual()
         self.screen = screen
+        self.visual_token = Token(color, screen)
+
 
     def is_empty(self):
         return self.amount == 0
@@ -20,6 +23,7 @@ class StackOfTokens:
 
     def update(self):
         self.set_image_to_actual()
+        #self.visual_token.update()
     def click_events(self):
         if self.actual_stack_image_rect.collidepoint(pygame.mouse.get_pos()):
             self.delete_token()
@@ -27,6 +31,7 @@ class StackOfTokens:
 
     def display(self, screen):
         screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
+        self.visual_token.display(screen)
 
     def is_possible_to_take_token(self):
         return not self.is_empty()

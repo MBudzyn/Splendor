@@ -1,9 +1,8 @@
-import pygame
+
 from menu_scene import MenuScene
-
-
 class SceneManager:
     def __init__(self):
+        import pygame
         pygame.init()
         self.screen = pygame.display.set_mode((1500, 800))
         self.clock = pygame.time.Clock()
@@ -18,6 +17,7 @@ class SceneManager:
         self.current_scene.update()
 
     def render(self):
+        import pygame
         self.current_scene.render()
 
         pygame.display.flip()
