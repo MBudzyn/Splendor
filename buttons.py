@@ -19,7 +19,9 @@ class Buttons:
             self.change_to_alt()
         else:
             self.change_to_normal()
-
+    def set_coordinates_to_mouse(self):
+        self.button_rect.center = pygame.mouse.get_pos()
+        
     def change_to_alt(self):
         self.button = self.alt_graphics
 
