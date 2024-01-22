@@ -3,13 +3,14 @@ import pygame
 from action_field import ActionField
 
 class StackOfTokens:
-    def __init__(self, color, amount, screen,action_field, is_universal=False):
+    def __init__(self, color, amount, screen,action_field, coordinates, is_universal=False):
         self.color = color
         self.amount = amount
         self.is_universal = is_universal
         self.tokens = [Token(color, is_universal) for _ in range(amount)]
         self.graphics_links = [f"graphics/{color}_token{i}.png" for i in range(8)]
         self.max_amount = 7
+        self.coordinates = coordinates
         self.set_image_to_actual()
         self.screen = screen
         self.visual_token = Token(color, screen)
@@ -21,7 +22,7 @@ class StackOfTokens:
 
     def set_image_to_actual(self):
         self.actual_stack_image = pygame.image.load(self.graphics_links[self.amount])
-        self.actual_stack_image_rect = self.actual_stack_image.get_rect(center=(400, 400))
+        self.actual_stack_image_rect = self.actual_stack_image.get_rect(center=self.coordinates)
 
     def update(self):
         self.set_image_to_actual()
@@ -34,7 +35,7 @@ class StackOfTokens:
         screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
 
     def is_possible_to_take_token(self):
-        return not self.is_empty()
+        return not self.is_empty() and self.action_field.can_be_added(self.tokens[-1])
 
     def is_possible_to_take_two_tokens(self):
         return self.amount >= 4

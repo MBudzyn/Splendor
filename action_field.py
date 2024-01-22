@@ -14,8 +14,17 @@ class ActionField():
         for _token in self.tokens_on_action_field:
             _token.display(self.screen)
 
+    def can_be_added(self, token):
+        if not len(self.tokens_on_action_field) < 3:
+            return False
+        for _token in self.tokens_on_action_field:
+            if _token.color == token.color:
+                return False
+        return True
+
+
     def add_token(self, _token):
-        if len(self.tokens_on_action_field) < 3:
+        if type(_token) == Token and self.can_be_added(_token):
             self.tokens_on_action_field.append(_token)
             _token.actual_image_rect.center = self.actual_token_position
             self.actual_token_position[0] += 50
