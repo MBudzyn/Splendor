@@ -16,9 +16,9 @@ class SceneManager:
     def update(self):
         self.current_scene.update()
 
-    def render(self):
+    def display(self):
         import pygame
-        self.current_scene.render()
+        self.current_scene.display()
 
         pygame.display.flip()
         self.clock.tick(60)
