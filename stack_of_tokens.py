@@ -23,7 +23,6 @@ class StackOfTokens:
 
     def update(self):
         self.set_image_to_actual()
-        #self.visual_token.update()
     def click_events(self):
         if self.actual_stack_image_rect.collidepoint(pygame.mouse.get_pos()):
             self.delete_token()
@@ -31,7 +30,6 @@ class StackOfTokens:
 
     def display(self, screen):
         screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
-        self.visual_token.display(screen)
 
     def is_possible_to_take_token(self):
         return not self.is_empty()
