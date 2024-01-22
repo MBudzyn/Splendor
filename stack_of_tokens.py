@@ -1,8 +1,9 @@
 from token import Token
 import pygame
+from action_field import ActionField
 
 class StackOfTokens:
-    def __init__(self, color, amount, screen, is_universal=False):
+    def __init__(self, color, amount, screen,action_field, is_universal=False):
         self.color = color
         self.amount = amount
         self.is_universal = is_universal
@@ -12,6 +13,7 @@ class StackOfTokens:
         self.set_image_to_actual()
         self.screen = screen
         self.visual_token = Token(color, screen)
+        self.action_field = action_field
 
 
     def is_empty(self):
@@ -25,7 +27,7 @@ class StackOfTokens:
         self.set_image_to_actual()
     def click_events(self):
         if self.actual_stack_image_rect.collidepoint(pygame.mouse.get_pos()):
-            self.delete_token()
+            self.action_field.add_token(self.get_token())
             self.update()
 
     def display(self, screen):

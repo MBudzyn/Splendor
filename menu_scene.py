@@ -9,8 +9,8 @@ class MenuScene(Scene):
     def __init__(self, screen, scene_man):
         super().__init__(screen)
         self.scene_man = scene_man
-        self.stack_of_tokens = StackOfTokens("red", 7, screen)
         self.action_field = ActionField(screen)
+        self.stack_of_tokens = StackOfTokens("red", 7, screen, self.action_field)
 
 
     def handle_events(self):
