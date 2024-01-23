@@ -14,6 +14,7 @@ class MenuScene(Scene):
         self.stack_of_red_tokens = StackOfTokens("red", 7, screen, self.action_field, Point(400,400))
         self.stack_of_blue_tokens = StackOfTokens("blue", 7, screen, self.action_field, Point(500,400))
         self.stack_of_green_tokens = StackOfTokens("green", 7, screen, self.action_field, Point(600, 400))
+        self.stack_of_special_tokens = StackOfTokens("special", 7, screen, self.action_field, Point(300, 400))
 
 
 
@@ -27,6 +28,7 @@ class MenuScene(Scene):
                 self.stack_of_red_tokens.click_events()
                 self.stack_of_blue_tokens.click_events()
                 self.stack_of_green_tokens.click_events()
+                self.stack_of_special_tokens.click_events()
                 self.action_field.click_events()
 
 
@@ -34,9 +36,12 @@ class MenuScene(Scene):
     def update(self):
         self.stack_of_red_tokens.update()
         self.stack_of_blue_tokens.update()
+        self.stack_of_special_tokens.update()
+        self.stack_of_green_tokens.update()
 
     def display(self):
         self.stack_of_red_tokens.display(self.screen)
         self.stack_of_blue_tokens.display(self.screen)
         self.stack_of_green_tokens.display(self.screen)
+        self.stack_of_special_tokens.display(self.screen)
         self.action_field.display()
