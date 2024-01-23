@@ -8,7 +8,7 @@ class Token:
         self.is_universal = is_universal
         self.coordinates = coordinates
         self.screen = screen
-        self.graphics = f"graphics/{color}_token3.png"
+        self.graphics = f"graphics/{color}_token.png"
         self.actual_image = pygame.image.load(self.graphics)
         self.actual_image_rect = self.actual_image.get_rect(center=(600, 600))
 
