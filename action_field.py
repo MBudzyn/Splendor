@@ -1,5 +1,6 @@
 import pygame.image
 from token import Token
+from point import Point
 
 class ActionField():
     def __init__(self, screen):
@@ -7,7 +8,7 @@ class ActionField():
         self.action_field = pygame.image.load("graphics/action_field.png")
         self.action_field_rect = self.action_field.get_rect(center=(800,500))
         self.tokens_on_action_field: list[Token] = []
-        self.actual_token_position = [750,500]
+        self.actual_token_position = Point(750, 500)
         self.clear_field = pygame.image.load("graphics/clear_button.png")
         self.clear_field_rect = self.clear_field.get_rect(center=(800,420))
 
@@ -23,7 +24,7 @@ class ActionField():
 
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
-        self.actual_token_position = [750,500]
+        self.actual_token_position.set_coordinates(750, 500)
 
     def can_be_added(self, token):
         if not len(self.tokens_on_action_field) < 3:
@@ -42,6 +43,6 @@ class ActionField():
     def add_token(self, _token):
         if type(_token) == Token and self.can_be_added(_token):
             self.tokens_on_action_field.append(_token)
-            _token.actual_image_rect.center = self.actual_token_position
-            self.actual_token_position[0] += 50
+            _token.actual_image_rect.center = self.actual_token_position.get_coordinates()
+            self.actual_token_position.increase_coordinates(50,0)
 

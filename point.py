@@ -16,5 +16,3 @@ class Point:
         self.x += x
         self.y += y
         self.coordinates = (self.x, self.y)
-
-

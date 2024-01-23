@@ -1,16 +1,17 @@
 from token import Token
+from point import Point
 import pygame
 from action_field import ActionField
 
 class StackOfTokens:
-    def __init__(self, color, amount, screen,action_field, coordinates, is_universal=False):
+    def __init__(self, color, amount, screen,action_field, coordinate_point: Point, is_universal=False):
         self.color = color
         self.amount = amount
         self.is_universal = is_universal
         self.tokens = [Token(color, is_universal) for _ in range(amount)]
         self.graphics_links = [f"graphics/{color}_token{i}.png" for i in range(8)]
         self.max_amount = 7
-        self.coordinates = coordinates
+        self.coordinate_point = coordinate_point
         self.set_image_to_actual()
         self.screen = screen
         self.visual_token = Token(color, screen)
@@ -22,7 +23,7 @@ class StackOfTokens:
 
     def set_image_to_actual(self):
         self.actual_stack_image = pygame.image.load(self.graphics_links[self.amount])
-        self.actual_stack_image_rect = self.actual_stack_image.get_rect(center=self.coordinates)
+        self.actual_stack_image_rect = self.actual_stack_image.get_rect(center=self.coordinate_point.get_coordinates())
 
     def update(self):
         self.set_image_to_actual()

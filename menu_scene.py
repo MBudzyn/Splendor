@@ -3,6 +3,7 @@ from scene import *
 import sys
 from stack_of_tokens import StackOfTokens
 from action_field import ActionField
+from point import Point
 
 
 class MenuScene(Scene):
@@ -10,8 +11,8 @@ class MenuScene(Scene):
         super().__init__(screen)
         self.scene_man = scene_man
         self.action_field = ActionField(screen)
-        self.stack_of_red_tokens = StackOfTokens("red", 7, screen, self.action_field, (400,400))
-        self.stack_of_blue_tokens = StackOfTokens("blue", 7, screen, self.action_field, (500,400))
+        self.stack_of_red_tokens = StackOfTokens("red", 7, screen, self.action_field, Point(400,400))
+        self.stack_of_blue_tokens = StackOfTokens("blue", 7, screen, self.action_field, Point(500,400))
 
 
     def handle_events(self):
