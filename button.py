@@ -1,7 +1,7 @@
 import pygame
 
 
-class Buttons:
+class Button:
     def __init__(self, coordinate_point, graphics, screen, alt_graphics = None):
 
         self.screen = screen
