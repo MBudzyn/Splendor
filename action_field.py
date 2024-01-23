@@ -8,11 +8,18 @@ class ActionField():
         self.action_field_rect = self.action_field.get_rect(center=(800,500))
         self.tokens_on_action_field: list[Token] = []
         self.actual_token_position = [750,500]
+        self.clear_field = pygame.image.load("graphics/clear_button.png")
+        self.clear_field_rect = self.clear_field.get_rect(center=(800,420))
+
 
     def display(self):
         self.screen.blit(self.action_field, self.action_field_rect)
+        self.screen.blit(self.clear_field, self.clear_field_rect)
         for _token in self.tokens_on_action_field:
             _token.display(self.screen)
+    def click_events(self):
+        if self.clear_field_rect.collidepoint(pygame.mouse.get_pos()):
+            self.clear_tokens_on_action_field()
 
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []

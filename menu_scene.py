@@ -23,6 +23,7 @@ class MenuScene(Scene):
             if event.type == pygame.MOUSEBUTTONDOWN:
                 self.stack_of_red_tokens.click_events()
                 self.stack_of_blue_tokens.click_events()
+                self.action_field.click_events()
 
 
     def update(self):
