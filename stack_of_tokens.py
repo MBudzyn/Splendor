@@ -38,6 +38,7 @@ class StackOfTokens:
     def is_possible_to_take_token(self):
         return not self.is_empty() and self.action_field.can_be_added(self.tokens[-1])
 
+
     def is_possible_to_take_two_tokens(self):
         return self.amount >= 4
 

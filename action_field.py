@@ -27,10 +27,14 @@ class ActionField():
         self.actual_token_position.set_coordinates(750, 500)
 
     def can_be_added(self, token):
+        if token.color == "special" and len(self.tokens_on_action_field) != 0:
+            return False
         if not len(self.tokens_on_action_field) < 3:
             return False
         if len(self.tokens_on_action_field) == 1 and self.tokens_on_action_field[0].color == token.color:
             return True
+        if len(self.tokens_on_action_field) == 1 and self.tokens_on_action_field[0].color == "special":
+            return False
         if len(self.tokens_on_action_field) == 2:
             if self.tokens_on_action_field[0].color == self.tokens_on_action_field[1].color:
                 return False
