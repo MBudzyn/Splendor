@@ -1,7 +1,6 @@
 
 from buttons import Buttons
 from point import Point
-
 class Card:
     def __init__(self, coordinate_point: Point, graphics, alt_graphics, screen,
                  lvl, points, color):

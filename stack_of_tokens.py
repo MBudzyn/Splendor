@@ -3,8 +3,9 @@ from point import Point
 import pygame
 from action_field import ActionField
 
+
 class StackOfTokens:
-    def __init__(self, color, amount, screen,action_field, coordinate_point: Point, is_universal=False):
+    def __init__(self, color, amount, screen, action_field, coordinate_point: Point, is_universal=False):
         self.color = color
         self.amount = amount
         self.is_universal = is_universal
@@ -17,7 +18,6 @@ class StackOfTokens:
         self.visual_token = Token(color, screen)
         self.action_field = action_field
 
-
     def is_empty(self):
         return self.amount == 0
 
@@ -27,6 +27,7 @@ class StackOfTokens:
 
     def update(self):
         self.set_image_to_actual()
+
     def click_events(self):
         if self.actual_stack_image_rect.collidepoint(pygame.mouse.get_pos()):
             self.action_field.add_token(self.get_token())
@@ -35,23 +36,26 @@ class StackOfTokens:
     def display(self, screen):
         screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
 
-    def is_possible_to_take_token(self):
+    def is_possible_to_add_token_to_action_field(self):
+        if len(self.action_field.tokens_on_action_field) == 1 and \
+                self.action_field.tokens_on_action_field[0].color == self.color and \
+                self.is_not_possible_to_take_second():
+            return False
         return not self.is_empty() and self.action_field.can_be_added(self.tokens[-1])
 
-
-    def is_possible_to_take_two_tokens(self):
-        return self.amount >= 4
+    def is_not_possible_to_take_second(self):
+        return self.amount < 3
 
     def is_possible_to_add_token(self):
         return self.amount < self.max_amount
 
     def delete_token(self):
-        if self.is_possible_to_take_token():
+        if self.is_possible_to_add_token_to_action_field():
             self.tokens.pop()
             self.amount -= 1
 
     def get_token(self):
-        if self.is_possible_to_take_token():
+        if self.is_possible_to_add_token_to_action_field():
             token = self.tokens[-1]
             self.delete_token()
             return token
