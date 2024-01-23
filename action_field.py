@@ -14,6 +14,10 @@ class ActionField():
         for _token in self.tokens_on_action_field:
             _token.display(self.screen)
 
+    def clear_tokens_on_action_field(self):
+        self.tokens_on_action_field = []
+        self.actual_token_position = [750,500]
+
     def can_be_added(self, token):
         if not len(self.tokens_on_action_field) < 3:
             return False
