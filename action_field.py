@@ -1,25 +1,25 @@
 import pygame.image
 from token import Token
 from point import Point
+from buttons import Buttons
 
 class ActionField():
     def __init__(self, screen):
         self.screen = screen
-        self.action_field = pygame.image.load("graphics/action_field.png")
-        self.action_field_rect = self.action_field.get_rect(center=(800,500))
         self.tokens_on_action_field: list[Token] = []
         self.actual_token_position = Point(750, 500)
-        self.clear_field = pygame.image.load("graphics/clear_button.png")
-        self.clear_field_rect = self.clear_field.get_rect(center=(800,420))
+        self.action_field_button = Buttons(Point(800,500),"graphics/action_field.png", screen)
+        self.clear_field_button = Buttons(Point(800,420),"graphics/clear_button.png", screen)
 
 
     def display(self):
-        self.screen.blit(self.action_field, self.action_field_rect)
-        self.screen.blit(self.clear_field, self.clear_field_rect)
+        self.action_field_button.display()
+        self.clear_field_button.display()
         for _token in self.tokens_on_action_field:
             _token.display(self.screen)
+            
     def click_events(self):
-        if self.clear_field_rect.collidepoint(pygame.mouse.get_pos()):
+        if self.clear_field_button.is_colliding_with_mouse():
             self.clear_tokens_on_action_field()
 
     def clear_tokens_on_action_field(self):
