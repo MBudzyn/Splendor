@@ -38,3 +38,4 @@ class Button:
 
     def change_to_normal(self):
         self.button = self.graphics
+

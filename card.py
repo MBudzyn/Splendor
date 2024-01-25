@@ -1,6 +1,7 @@
-
 from button import Button
 from point import Point
+
+
 class Card:
     def __init__(self, coordinate_point: Point, graphics, alt_graphics, screen,
                  lvl, points, color):
@@ -10,8 +11,6 @@ class Card:
         self.points = points
         self.cost = {"red": 0, "blue": 0, "black": 0, "white": 0, "green": 0}
         self.color = color
-
-
 
     def disply(self):
         self.card_button.display()

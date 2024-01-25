@@ -20,7 +20,7 @@ class DeckOfCards:
 
     def load_cards_test(self, number_of_cards, color):
         for i in range(1,number_of_cards + 1):
-            self.add_card(Card(Point(0,0),f"graphics/card{i%6 +1}.png", f"graphics/card_highlight.png",self.screen, self.lvl,0,color))
+            self.add_card(Card(Point(0,0),f"graphics/card{i%6 +1}.png", f"graphics/action_field.png",self.screen, self.lvl,0,color))
 
 
     def is_colliding_with_mouse(self) -> bool:
@@ -33,7 +33,7 @@ class DeckOfCards:
     def is_possible_to_remove_card(self) -> bool:
         return self.number_of_cards > 0
 
-    def get_card_from_top(self):
+    def get_card_from_top(self) -> Card:
         if self.is_possible_to_remove_card():
             self.number_of_cards -= 1
             return self.cards.pop()

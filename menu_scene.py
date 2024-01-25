@@ -36,6 +36,9 @@ class MenuScene(Scene):
                 self.stack_of_green_tokens.click_events()
                 self.stack_of_special_tokens.click_events()
                 self.action_field.click_events()
+                self.first_row_of_cards.click_events()
+                self.second_row_of_cards.click_events()
+                self.third_row_of_cards.click_events()
 
 
 

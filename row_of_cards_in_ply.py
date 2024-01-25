@@ -45,6 +45,11 @@ class RowOfCards:
     def is_possible_to_remove_card(self):
         return len(self.cards) > 0
 
+    def click_events(self):
+        for card in self.cards:
+            if card.card_button.is_colliding_with_mouse():
+                self.remove_card(card)
+
     def add_from_top_of_deck(self):
         if self.deck_of_cards.is_possible_to_remove_card() and self.is_possible_to_add_card():
             self.add_card(self.deck_of_cards.get_card_from_top())
