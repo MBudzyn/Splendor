@@ -51,7 +51,6 @@ class MenuScene(Scene):
         self.stack_of_green_tokens.display(self.screen)
         self.stack_of_special_tokens.display(self.screen)
         self.action_field.display()
-        self.deck_of_cards.display()
         self.first_row_of_cards.display()
         self.second_row_of_cards.display()
         self.third_row_of_cards.display()
