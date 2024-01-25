@@ -38,6 +38,10 @@ class RowOfCards:
     def is_full(self):
         return len(self.cards) == 4
 
+    def update(self):
+        for _card in self.cards:
+            _card.update()
+
     def is_possible_to_remove_card(self):
         return len(self.cards) > 0
 

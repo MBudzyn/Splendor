@@ -20,7 +20,7 @@ class DeckOfCards:
 
     def load_cards_test(self, number_of_cards, color):
         for i in range(1,number_of_cards + 1):
-            self.add_card(Card(Point(0,0),f"graphics/card{i%6 +1}.png", f"graphics/card{i%6 + 1}.png",self.screen, self.lvl,0,color))
+            self.add_card(Card(Point(0,0),f"graphics/card{i%6 +1}.png", f"graphics/card_highlight.png",self.screen, self.lvl,0,color))
 
 
     def is_colliding_with_mouse(self) -> bool:

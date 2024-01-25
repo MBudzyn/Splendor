@@ -44,6 +44,9 @@ class MenuScene(Scene):
         self.stack_of_blue_tokens.update()
         self.stack_of_special_tokens.update()
         self.stack_of_green_tokens.update()
+        self.first_row_of_cards.update()
+        self.second_row_of_cards.update()
+        self.third_row_of_cards.update()
 
     def display(self):
         self.stack_of_red_tokens.display(self.screen)

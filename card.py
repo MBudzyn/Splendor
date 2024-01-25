@@ -11,5 +11,10 @@ class Card:
         self.cost = {"red": 0, "blue": 0, "black": 0, "white": 0, "green": 0}
         self.color = color
 
+
+
     def disply(self):
         self.card_button.display()
+
+    def update(self):
+        self.card_button.update()
