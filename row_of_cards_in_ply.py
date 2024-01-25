@@ -1,6 +1,7 @@
 from card import Card
 from action_field import ActionField
 from deck_of_cards import DeckOfCards
+from point import Point
 
 
 class RowOfCards:
@@ -20,9 +21,10 @@ class RowOfCards:
     def fill_from_deck(self):
         for i in range(4):
             self.add_from_top_of_deck()
+
     def change_cards_coordinates(self):
         for i in range(len(self.cards)):
-            self.cards[i].card_button.coordinate_point.set_coordinates(100 + i*150, 100)
+            self.cards[i].card_button.set_coordinates(Point(100 + i * 150, 200))
 
     def remove_card(self, card: Card):
         self.cards.remove(card)
