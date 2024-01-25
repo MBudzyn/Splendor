@@ -10,10 +10,19 @@ class RowOfCards:
         self.action_field = action_field
         self.cards: list[Card] = []
         self.deck_of_cards = deck_of_cards
+        self.fill_from_deck()
+        self.change_cards_coordinates()
 
     def display(self):
         for _card in self.cards:
             _card.disply()
+
+    def fill_from_deck(self):
+        for i in range(4):
+            self.add_from_top_of_deck()
+    def change_cards_coordinates(self):
+        for i in range(len(self.cards)):
+            self.cards[i].card_button.coordinate_point.set_coordinates(100 + i*150, 100)
 
     def remove_card(self, card: Card):
         self.cards.remove(card)

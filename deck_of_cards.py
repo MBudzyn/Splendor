@@ -12,10 +12,16 @@ class DeckOfCards:
         self.lvl = lvl
         self.coordinate_point = coordinate_point
         self.deck_button = Button(self.coordinate_point, graphics, screen)
+        self.load_cards_test(6,"red")
 
 
     def display(self):
         self.deck_button.display()
+
+    def load_cards_test(self, number_of_cards, color):
+        for i in range(1,number_of_cards + 1):
+            self.cards.append(Card(Point(0,0),f"graphics/card{i}.png", f"graphics/card{i}.png",self.screen, self.lvl,0,color))
+
 
     def is_colliding_with_mouse(self) -> bool:
         return self.deck_button.is_colliding_with_mouse()
