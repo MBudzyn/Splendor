@@ -4,7 +4,7 @@ class SceneManager:
     def __init__(self):
         import pygame
         pygame.init()
-        self.screen = pygame.display.set_mode((1500, 800))
+        self.screen = pygame.display.set_mode((1550, 850))
         self.clock = pygame.time.Clock()
         self.menu_scene = MenuScene(self.screen, self)
 
