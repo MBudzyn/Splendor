@@ -18,7 +18,9 @@ class MenuScene(Scene):
         self.stack_of_green_tokens = StackOfTokens("green", 7, screen, self.action_field, Point(600, 400))
         self.stack_of_special_tokens = StackOfTokens("special", 5, screen, self.action_field, Point(300, 400))
         self.deck_of_cards = DeckOfCards(screen, 1, "graphics/deck_of_cards.png", Point(1300, 200))
-        self.row_of_cards = RowOfCards(1, screen, self.action_field, self.deck_of_cards)
+        self.first_row_of_cards = RowOfCards(1, screen, self.action_field, self.deck_of_cards)
+        self.second_row_of_cards = RowOfCards(2, screen, self.action_field, self.deck_of_cards)
+        self.third_row_of_cards = RowOfCards(3, screen, self.action_field, self.deck_of_cards)
 
 
 
@@ -50,5 +52,7 @@ class MenuScene(Scene):
         self.stack_of_special_tokens.display(self.screen)
         self.action_field.display()
         self.deck_of_cards.display()
-        self.row_of_cards.display()
+        self.first_row_of_cards.display()
+        self.second_row_of_cards.display()
+        self.third_row_of_cards.display()
 

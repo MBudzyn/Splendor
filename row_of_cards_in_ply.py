@@ -24,7 +24,7 @@ class RowOfCards:
 
     def change_cards_coordinates(self):
         for i in range(len(self.cards)):
-            self.cards[i].card_button.set_coordinates(Point(100 + i * 150, 200))
+            self.cards[i].card_button.set_coordinates(Point(100 + i * 150, self.lvl * 200))
 
     def remove_card(self, card: Card):
         self.cards.remove(card)
