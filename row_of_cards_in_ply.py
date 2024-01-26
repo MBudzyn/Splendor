@@ -34,6 +34,7 @@ class RowOfCards:
 
     def place_in_action_field(self, card: Card):
         self.action_field.add_card(card)
+        self.remove_card(card)
 
     def is_possible_to_add_card(self):
         return len(self.cards) <= 3
@@ -52,7 +53,6 @@ class RowOfCards:
         for card in self.cards:
             if card.card_button.is_colliding_with_mouse():
                 self.place_in_action_field(card)
-                self.remove_card(card)
 
     def add_from_top_of_deck(self):
         if self.deck_of_cards.is_possible_to_remove_card() and self.is_possible_to_add_card():

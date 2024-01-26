@@ -10,8 +10,8 @@ class ActionField():
         self.tokens_on_action_field: list[Token] = []
         self.actual_token_position = Point(750, 500)
         self.actual_card_position = Point(750, 600)
-        self.action_field_button = Button(Point(800, 500), "graphics/action_field.png", screen)
-        self.clear_field_button = Button(Point(800, 420), "graphics/clear_button.png", screen)
+        self.action_field_button = Button(Point(1000, 500), "graphics/action_field.png", screen)
+        self.clear_field_button = Button(Point(1000, 420), "graphics/clear_button.png", screen)
         self.cards_on_action_field: list[Card] = []
 
 

@@ -6,6 +6,7 @@ from action_field import ActionField
 from point import Point
 from deck_of_cards import DeckOfCards
 from row_of_cards_in_ply import RowOfCards
+from button import Button
 
 
 class MenuScene(Scene):
@@ -21,6 +22,7 @@ class MenuScene(Scene):
         self.first_row_of_cards = RowOfCards(1, screen, self.action_field, self.deck_of_cards)
         self.second_row_of_cards = RowOfCards(2, screen, self.action_field, self.deck_of_cards)
         self.third_row_of_cards = RowOfCards(3, screen, self.action_field, self.deck_of_cards)
+        self.mata = Button(Point(0,0), "graphics/mata.png", screen)
 
 
 
@@ -52,6 +54,7 @@ class MenuScene(Scene):
         self.third_row_of_cards.update()
 
     def display(self):
+        self.mata.display()
         self.stack_of_red_tokens.display(self.screen)
         self.stack_of_blue_tokens.display(self.screen)
         self.stack_of_green_tokens.display(self.screen)
