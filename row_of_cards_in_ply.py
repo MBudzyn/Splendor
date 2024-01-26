@@ -16,7 +16,7 @@ class RowOfCards:
 
     def display(self):
         for _card in self.cards:
-            _card.disply()
+            _card.display()
 
     def fill_from_deck(self):
         for i in range(4):
@@ -24,9 +24,10 @@ class RowOfCards:
 
     def change_cards_coordinates(self):
         for i in range(len(self.cards)):
-            self.cards[i].card_button.set_coordinates(Point(100 + i * 150, self.lvl * 200 +75))
+            self.cards[i].card_button.set_coordinates(Point(100 + i * 150, self.lvl * 200 + 75))
 
     def remove_card(self, card: Card):
+        card.card_button.is_displayed = False
         self.cards.remove(card)
 
     def add_card(self, card: Card):
