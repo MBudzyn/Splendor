@@ -1,7 +1,6 @@
 from card import Card
 from point import Point
 from button import Button
-from action_field import ActionField
 
 
 class DeckOfCards:

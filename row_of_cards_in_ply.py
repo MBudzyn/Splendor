@@ -5,7 +5,7 @@ from point import Point
 
 
 class RowOfCards:
-    def __init__(self, lvl, screen, action_field: ActionField, deck_of_cards: DeckOfCards):
+    def __init__(self, lvl, screen, action_field: ActionField, deck_of_cards: DeckOfCards,):
         self.lvl = lvl
         self.screen = screen
         self.action_field = action_field
@@ -32,6 +32,9 @@ class RowOfCards:
     def add_card(self, card: Card):
         self.cards.append(card)
 
+    def place_in_action_field(self, card: Card):
+        self.action_field.add_card(card)
+
     def is_possible_to_add_card(self):
         return len(self.cards) <= 3
 
@@ -48,6 +51,7 @@ class RowOfCards:
     def click_events(self):
         for card in self.cards:
             if card.card_button.is_colliding_with_mouse():
+                self.place_in_action_field(card)
                 self.remove_card(card)
 
     def add_from_top_of_deck(self):
