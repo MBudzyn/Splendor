@@ -52,6 +52,7 @@ class MenuScene(Scene):
         self.first_row_of_cards.update()
         self.second_row_of_cards.update()
         self.third_row_of_cards.update()
+        self.action_field.update()
 
     def display(self):
         self.mata.display()
