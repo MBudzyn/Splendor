@@ -27,7 +27,6 @@ class RowOfCards:
             self.cards[i].card_button.set_coordinates(Point(100 + i * 150, self.lvl * 200 + 75))
 
     def remove_card(self, card: Card):
-        card.card_button.is_displayed = False
         self.cards.remove(card)
 
     def add_card(self, card: Card):
@@ -53,4 +52,4 @@ class RowOfCards:
 
     def add_from_top_of_deck(self):
         if self.deck_of_cards.is_possible_to_remove_card() and self.is_possible_to_add_card():
-            self.add_card(self.deck_of_cards.get_card_from_top())
+            self.add_card(self.deck_of_cards.remove_card_from_top())
