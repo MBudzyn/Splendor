@@ -43,7 +43,7 @@ class StackOfTokens:
             return False
         if self.action_field.cards_on_action_field:
             return False
-        return not self.is_empty() and self.action_field.can_be_added(self.tokens[-1])
+        return not self.is_empty() and self.action_field.token_can_be_added(self.tokens[-1])
 
     def is_not_possible_to_take_second(self):
         return self.amount < 3

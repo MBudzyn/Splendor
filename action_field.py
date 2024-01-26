@@ -17,6 +17,7 @@ class ActionField:
         self.back_button = Button(Point(1000, 600), "graphics/back.png", screen, "graphics/clear_alt_button.png")
         self.cards_on_action_field: list[Card] = []
         self.three_rows_of_cards = None
+        self.six_stacks_of_tokens = None
 
     def update(self):
         self.action_field_button.update()
@@ -37,6 +38,7 @@ class ActionField:
             self.clear_action_field()
         if self.back_button.is_colliding_with_mouse():
             self.return_card_to_row()
+            self.return_token_to_stack()
             self.clear_action_field()
     def get_card(self):
         if self.cards_on_action_field:
@@ -46,6 +48,10 @@ class ActionField:
         if self.cards_on_action_field:
             self.three_rows_of_cards.add_card_to_correct_row(self.get_card())
             self.three_rows_of_cards.change_cards_coordinates()
+
+    def return_token_to_stack(self):
+        for token in self.tokens_on_action_field:
+            self.six_stacks_of_tokens.add_token_to_correct_stack(token)
 
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
