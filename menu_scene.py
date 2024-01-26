@@ -19,12 +19,14 @@ class MenuScene(Scene):
         self.stack_of_blue_tokens = StackOfTokens("blue", 7, screen, self.action_field, Point(500,50))
         self.stack_of_green_tokens = StackOfTokens("green", 7, screen, self.action_field, Point(600, 50))
         self.stack_of_special_tokens = StackOfTokens("special", 5, screen, self.action_field, Point(300, 50))
-        self.deck_of_cards = DeckOfCards(screen, 1, "graphics/deck_of_cards.png", Point(1300, 200))
+        self.first_deck_of_cards = DeckOfCards(screen, 1, "graphics/deck_of_cards.png", Point(1300, 200))
+        self.second_deck_of_cards = DeckOfCards(screen, 2, "graphics/deck_of_cards.png", Point(1300, 200))
+        self.third_deck_of_cards = DeckOfCards(screen, 3, "graphics/deck_of_cards.png", Point(1300, 200))
         self.mata = Button(Point(0,0), "graphics/mata.png", screen)
-        self.three_rows_of_cards = ThreeRows(RowOfCards(1, screen, self.action_field, self.deck_of_cards),
-                                             RowOfCards(2, screen, self.action_field, self.deck_of_cards),
-                                             RowOfCards(3, screen, self.action_field, self.deck_of_cards))
-        self.action_field.row_of_cards = self.three_rows_of_cards.first_row
+        self.three_rows_of_cards = ThreeRows(RowOfCards(1, screen, self.action_field, self.first_deck_of_cards),
+                                             RowOfCards(2, screen, self.action_field, self.second_deck_of_cards),
+                                             RowOfCards(3, screen, self.action_field, self.third_deck_of_cards))
+        self.action_field.three_rows_of_cards = self.three_rows_of_cards
 
 
     def handle_events(self):

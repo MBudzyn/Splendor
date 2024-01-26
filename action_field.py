@@ -4,6 +4,7 @@ from point import Point
 from button import Button
 from card import Card
 
+
 class ActionField():
     def __init__(self, screen):
         self.screen = screen
@@ -11,15 +12,17 @@ class ActionField():
         self.actual_token_position = Point(750, 500)
         self.actual_card_position = Point(750, 600)
         self.action_field_button = Button(Point(1000, 500), "graphics/action_field.png", screen)
-        self.clear_field_button = Button(Point(1000, 420), "graphics/clear_button.png", screen,"graphics/clear_alt_button.png")
-        self.back_button = Button(Point(1000, 600), "graphics/back.png", screen,"graphics/clear_alt_button.png")
+        self.clear_field_button = Button(Point(1000, 420), "graphics/clear_button.png", screen,
+                                         "graphics/clear_alt_button.png")
+        self.back_button = Button(Point(1000, 600), "graphics/back.png", screen, "graphics/clear_alt_button.png")
         self.cards_on_action_field: list[Card] = []
-        self.row_of_cards = None
+        self.three_rows_of_cards = None
 
     def update(self):
         self.action_field_button.update()
         self.clear_field_button.update()
         self.back_button.update()
+
     def display(self):
         self.action_field_button.display()
         self.clear_field_button.display()
@@ -31,24 +34,32 @@ class ActionField():
 
     def click_events(self):
         if self.clear_field_button.is_colliding_with_mouse():
-            self.clear_tokens_on_action_field()
+            self.clear_action_field()
         if self.back_button.is_colliding_with_mouse():
             self.return_card_to_row()
-            self.clear_tokens_on_action_field()
+            self.clear_action_field()
+    def get_card(self):
+        if self.cards_on_action_field:
+            return self.cards_on_action_field[0]
 
     def return_card_to_row(self):
         if self.cards_on_action_field:
-            self.row_of_cards.add_card(self.cards_on_action_field[0])
-            self.row_of_cards.change_cards_coordinates()
-
+            self.three_rows_of_cards.add_card_to_correct_row(self.get_card())
+            self.three_rows_of_cards.change_cards_coordinates()
 
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
-        self.cards_on_action_field = []
         self.actual_token_position.set_coordinates(750, 500)
+
+    def clear_action_field(self):
+        self.clear_tokens_on_action_field()
+        self.clear_cards_on_action_field()
+
+    def clear_cards_on_action_field(self):
+        self.cards_on_action_field = []
         self.actual_card_position.set_coordinates(750, 600)
 
-    def can_be_added(self, token: Token):
+    def token_can_be_added(self, token: Token):
         if token.color == "special" and len(self.tokens_on_action_field) != 0:
             return False
         if not len(self.tokens_on_action_field) < 3:
@@ -65,18 +76,17 @@ class ActionField():
                 return False
         return True
 
-    def card_can_be_added(self, card: Card):
+    def card_can_be_added(self):
         if self.cards_on_action_field == [] and self.tokens_on_action_field == []:
             return True
 
     def add_card(self, _card: Card):
-        if self.card_can_be_added(_card):
+        if self.card_can_be_added():
             self.cards_on_action_field.append(_card)
             _card.card_button.set_coordinates(self.actual_token_position)
 
     def add_token(self, _token):
-        if type(_token) == Token and self.can_be_added(_token):
+        if type(_token) == Token and self.token_can_be_added(_token):
             self.tokens_on_action_field.append(_token)
             _token.actual_image_rect.center = self.actual_token_position.get_coordinates()
-            self.actual_token_position.increase_coordinates(50,0)
-
+            self.actual_token_position.increase_coordinates(50, 0)
