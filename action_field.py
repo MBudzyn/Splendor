@@ -5,7 +5,7 @@ from button import Button
 from card import Card
 
 
-class ActionField():
+class ActionField:
     def __init__(self, screen):
         self.screen = screen
         self.tokens_on_action_field: list[Token] = []
