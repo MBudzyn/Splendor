@@ -23,6 +23,7 @@ class MenuScene(Scene):
         self.second_row_of_cards = RowOfCards(2, screen, self.action_field, self.deck_of_cards)
         self.third_row_of_cards = RowOfCards(3, screen, self.action_field, self.deck_of_cards)
         self.mata = Button(Point(0,0), "graphics/mata.png", screen)
+        self.action_field.row_of_cards = self.first_row_of_cards
 
 
 

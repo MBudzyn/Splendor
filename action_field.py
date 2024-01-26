@@ -12,14 +12,18 @@ class ActionField():
         self.actual_card_position = Point(750, 600)
         self.action_field_button = Button(Point(1000, 500), "graphics/action_field.png", screen)
         self.clear_field_button = Button(Point(1000, 420), "graphics/clear_button.png", screen,"graphics/clear_alt_button.png")
+        self.back_button = Button(Point(1000, 600), "graphics/clear_button.png", screen,"graphics/clear_alt_button.png")
         self.cards_on_action_field: list[Card] = []
+        self.row_of_cards = None
 
     def update(self):
         self.action_field_button.update()
         self.clear_field_button.update()
+        self.back_button.update()
     def display(self):
         self.action_field_button.display()
         self.clear_field_button.display()
+        self.back_button.display()
         for _token in self.tokens_on_action_field:
             _token.display(self.screen)
         for _card in self.cards_on_action_field:
@@ -28,6 +32,15 @@ class ActionField():
     def click_events(self):
         if self.clear_field_button.is_colliding_with_mouse():
             self.clear_tokens_on_action_field()
+        if self.back_button.is_colliding_with_mouse():
+            self.return_card_to_row()
+            self.clear_tokens_on_action_field()
+
+    def return_card_to_row(self):
+        if self.cards_on_action_field:
+            self.row_of_cards.add_card(self.cards_on_action_field[0])
+            self.row_of_cards.change_cards_coordinates()
+        
 
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
