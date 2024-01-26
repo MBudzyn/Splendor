@@ -41,6 +41,8 @@ class StackOfTokens:
                 self.action_field.tokens_on_action_field[0].color == self.color and \
                 self.is_not_possible_to_take_second():
             return False
+        if self.action_field.cards_on_action_field:
+            return False
         return not self.is_empty() and self.action_field.can_be_added(self.tokens[-1])
 
     def is_not_possible_to_take_second(self):

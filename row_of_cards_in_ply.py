@@ -29,12 +29,16 @@ class RowOfCards:
     def remove_card(self, card: Card):
         self.cards.remove(card)
 
+    def is_possible_to_place_in_action_field(self, card: Card):
+        return self.action_field.card_can_be_added(card)
+
     def add_card(self, card: Card):
         self.cards.append(card)
 
     def place_in_action_field(self, card: Card):
-        self.action_field.add_card(card)
-        self.remove_card(card)
+        if self.is_possible_to_place_in_action_field(card):
+            self.action_field.add_card(card)
+            self.remove_card(card)
 
     def is_possible_to_add_card(self):
         return len(self.cards) <= 3
