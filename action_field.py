@@ -12,7 +12,7 @@ class ActionField():
         self.actual_card_position = Point(750, 600)
         self.action_field_button = Button(Point(1000, 500), "graphics/action_field.png", screen)
         self.clear_field_button = Button(Point(1000, 420), "graphics/clear_button.png", screen,"graphics/clear_alt_button.png")
-        self.back_button = Button(Point(1000, 600), "graphics/clear_button.png", screen,"graphics/clear_alt_button.png")
+        self.back_button = Button(Point(1000, 600), "graphics/back.png", screen,"graphics/clear_alt_button.png")
         self.cards_on_action_field: list[Card] = []
         self.row_of_cards = None
 
@@ -40,7 +40,7 @@ class ActionField():
         if self.cards_on_action_field:
             self.row_of_cards.add_card(self.cards_on_action_field[0])
             self.row_of_cards.change_cards_coordinates()
-        
+
 
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
