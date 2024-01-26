@@ -83,8 +83,12 @@ class ActionField:
         return True
 
     def card_can_be_added(self):
-        if self.cards_on_action_field == [] and self.tokens_on_action_field == []:
-            return True
+        if not self.cards_on_action_field:
+            if self.tokens_on_action_field == [] or self.tokens_on_action_field[0].color == "special":
+                return True
+        return False
+
+
 
     def add_card(self, _card: Card):
         if self.card_can_be_added():
