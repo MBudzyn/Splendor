@@ -5,7 +5,7 @@ from point import Point
 
 
 class RowOfCards:
-    def __init__(self, lvl, screen, action_field: ActionField, deck_of_cards: DeckOfCards,):
+    def __init__(self, lvl, screen, action_field: ActionField, deck_of_cards: DeckOfCards):
         self.lvl = lvl
         self.screen = screen
         self.action_field = action_field
