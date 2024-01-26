@@ -28,9 +28,9 @@ class MenuScene(Scene):
         self.six_stacks_of_tokens = SixStackOfTokens(StackOfTokens("blue", 7, screen, self.action_field, Point(500,50)),
                                                      StackOfTokens("green", 7, screen, self.action_field,Point(600, 50)),
                                                      StackOfTokens("red", 7, screen, self.action_field, Point(400, 50)),
-                                                     StackOfTokens("red", 7, screen, self.action_field, Point(700, 50)),
-                                                     StackOfTokens("red", 7, screen, self.action_field, Point(800, 50)),
-                                                     StackOfTokens("special", 7, screen, self.action_field, Point(900, 50)),
+                                                     StackOfTokens("white", 7, screen, self.action_field,Point(800, 50)),
+                                                     StackOfTokens("black", 7, screen, self.action_field, Point(700, 50)),
+                                                     StackOfTokens("special", 5, screen, self.action_field, Point(900, 50)),
                                                      self.screen)
 
         self.action_field.three_rows_of_cards = self.three_rows_of_cards
