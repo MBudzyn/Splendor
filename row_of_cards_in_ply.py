@@ -41,7 +41,7 @@ class RowOfCards:
             self.remove_card(card)
 
     def is_possible_to_add_card(self):
-        return len(self.cards) <= 3
+        return not self.is_full()
 
     def is_full(self):
         return len(self.cards) == 4
