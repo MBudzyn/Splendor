@@ -16,7 +16,7 @@ class ActionField:
                                          "graphics/clear_alt_button.png")
         self.back_button = Button(Point(1000, 600), "graphics/back.png", screen, "graphics/clear_alt_button.png")
         self.cards_on_action_field: list[Card] = []
-        self.fill_rows_button = Button(Point(1000, 300),"graphics/clear_button.png", screen,"graphics/clear_alt_button.png")
+        self.fill_rows_button = Button(Point(1000, 300),"graphics/fill_rows.png", screen,"graphics/clear_alt_button.png")
         self.three_rows_of_cards = None
         self.six_stacks_of_tokens = None
 
