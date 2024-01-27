@@ -4,7 +4,6 @@ from action_field import ActionField
 from button import Button
 
 
-
 class StackOfTokens:
     def __init__(self, color: str, amount: int, screen, action_field: ActionField,
                  coordinate_point: Point, is_universal=False):
@@ -33,8 +32,10 @@ class StackOfTokens:
         self.stack_button.update()
 
     def click_events(self):
-        if self.stack_button.is_colliding_with_mouse():
-            self.action_field.add_token(self.get_token())
+        if self.stack_button.is_colliding_with_mouse() and \
+           self.is_possible_to_add_token_to_action_field():
+
+            self.action_field.add_token(self.pop_token())
             self.update()
 
     def display(self):
@@ -52,19 +53,19 @@ class StackOfTokens:
     def is_not_possible_to_take_second(self):
         return self.amount < 3
 
-    def is_possible_to_add_token(self):
-        return self.amount < self.max_amount
-
     def delete_token(self):
-        if self.is_possible_to_add_token_to_action_field():
+        if not self.is_empty():
             self.tokens.pop()
             self.amount -= 1
 
-    def get_token(self):
-        if self.is_possible_to_add_token_to_action_field():
+    def pop_token(self):
+        if not self.is_empty():
             token = self.tokens[-1]
             self.delete_token()
             return token
+
+    def is_possible_to_add_token(self):
+        return self.amount < self.max_amount
 
     def add_token(self):
         if self.is_possible_to_add_token():
