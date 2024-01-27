@@ -16,6 +16,7 @@ class ActionField:
                                          "graphics/clear_alt_button.png")
         self.back_button = Button(Point(1000, 600), "graphics/back.png", screen, "graphics/clear_alt_button.png")
         self.cards_on_action_field: list[Card] = []
+        self.fill_rows_button = Button(Point(1000, 300),"graphics/clear_button.png", screen,"graphics/clear_alt_button.png")
         self.three_rows_of_cards = None
         self.six_stacks_of_tokens = None
 
@@ -23,11 +24,13 @@ class ActionField:
         self.action_field_button.update()
         self.clear_field_button.update()
         self.back_button.update()
+        self.fill_rows_button.update()
 
     def display(self):
         self.action_field_button.display()
         self.clear_field_button.display()
         self.back_button.display()
+        self.fill_rows_button.display()
         for _token in self.tokens_on_action_field:
             _token.display(self.screen)
         for _card in self.cards_on_action_field:
@@ -40,6 +43,8 @@ class ActionField:
             self.return_card_to_row()
             self.return_token_to_stack()
             self.clear_action_field()
+        if self.fill_rows_button.is_colliding_with_mouse():
+            self.three_rows_of_cards.fill_from_decks()
     def get_card(self):
         if self.cards_on_action_field:
             return self.cards_on_action_field[0]

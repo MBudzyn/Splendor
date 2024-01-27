@@ -11,7 +11,7 @@ class DeckOfCards:
         self.lvl = lvl
         self.coordinate_point = coordinate_point
         self.deck_button = Button(self.coordinate_point, graphics, screen)
-        self.load_cards_test(18, "red")
+        self.load_cards_test(8, "red")
 
     def display(self):
         self.deck_button.display()

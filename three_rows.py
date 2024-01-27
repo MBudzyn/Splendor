@@ -26,3 +26,8 @@ class ThreeRows:
     def click_events(self):
         for row in self.rows.values():
             row.click_events()
+
+    def fill_from_decks(self):
+        for row in self.rows.values():
+            row.fill_from_deck()
+            row.change_cards_coordinates()
