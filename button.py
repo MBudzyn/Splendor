@@ -22,6 +22,11 @@ class Button:
         if self.is_highlighted:
             self.screen.blit(self.highlighted_button, self.highlighted_button_rect)
 
+    def set_graphic(self, graphic):
+        self.graphics = pygame.image.load(graphic)
+        self.button = self.graphics
+        self.button_rect = self.button.get_rect(center=self.coordinate_point.get_coordinates())
+
     def is_colliding_with_mouse(self):
         return self.button_rect.collidepoint(pygame.mouse.get_pos())
 

@@ -1,10 +1,14 @@
 from token import Token
 from point import Point
-import pygame
+from action_field import ActionField
+from button import Button
+
 
 
 class StackOfTokens:
-    def __init__(self, color, amount, screen, action_field, coordinate_point: Point, is_universal=False):
+    def __init__(self, color: str, amount: int, screen, action_field: ActionField,
+                 coordinate_point: Point, is_universal=False):
+
         self.color = color
         self.amount = amount
         self.is_universal = is_universal
@@ -12,37 +16,29 @@ class StackOfTokens:
         self.graphics_links = [f"graphics/{color}_token{i}.png" for i in range(8)]
         self.max_amount = 7
         self.coordinate_point = coordinate_point
-        self.actual_stack_image = None
-        self.actual_stack_image_rect = None
+        self.stack_button = Button(self.coordinate_point, f"graphics/{color}_token0.png",
+                                   screen, "graphics/token_highlight.png")
         self.set_image_to_actual()
         self.screen = screen
-        self.visual_token = Token(color, screen)
         self.action_field = action_field
-        self.highlight_frame = pygame.image.load("graphics/token_highlight.png")
-        self.highlight_rect = self.highlight_frame.get_rect(center = self.coordinate_point.get_coordinates())
 
     def is_empty(self):
         return self.amount == 0
 
     def set_image_to_actual(self):
-        self.actual_stack_image = pygame.image.load(self.graphics_links[self.amount])
-        self.actual_stack_image_rect = self.actual_stack_image.get_rect(center=self.coordinate_point.get_coordinates())
-
-    def is_colliding_with_mouse(self):
-        return self.actual_stack_image_rect.collidepoint(pygame.mouse.get_pos())
+        self.stack_button.set_graphic(self.graphics_links[self.amount])
 
     def update(self):
         self.set_image_to_actual()
+        self.stack_button.update()
 
     def click_events(self):
-        if self.actual_stack_image_rect.collidepoint(pygame.mouse.get_pos()):
+        if self.stack_button.is_colliding_with_mouse():
             self.action_field.add_token(self.get_token())
             self.update()
 
     def display(self):
-        self.screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
-        if self.is_colliding_with_mouse():
-            self.screen.blit(self.highlight_frame, self.highlight_rect)
+        self.stack_button.display()
 
     def is_possible_to_add_token_to_action_field(self):
         if len(self.action_field.tokens_on_action_field) == 1 and \
