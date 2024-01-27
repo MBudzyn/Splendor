@@ -17,3 +17,6 @@ class Card:
 
     def update(self):
         self.card_button.update()
+
+    def set_coordinates(self, coordinate_point: Point):
+        self.card_button.set_coordinates(coordinate_point)
