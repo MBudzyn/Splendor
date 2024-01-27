@@ -13,10 +13,14 @@ class StackOfTokens:
         self.graphics_links = [f"graphics/{color}_token{i}.png" for i in range(8)]
         self.max_amount = 7
         self.coordinate_point = coordinate_point
+        self.actual_stack_image = None
+        self.actual_stack_image_rect = None
         self.set_image_to_actual()
         self.screen = screen
         self.visual_token = Token(color, screen)
         self.action_field = action_field
+        self.highlight_frame = pygame.image.load("graphics/token_highlight.png")
+        self.highlight_rect = self.highlight_frame.get_rect(center = self.coordinate_point.get_coordinates())
 
     def is_empty(self):
         return self.amount == 0
@@ -24,6 +28,9 @@ class StackOfTokens:
     def set_image_to_actual(self):
         self.actual_stack_image = pygame.image.load(self.graphics_links[self.amount])
         self.actual_stack_image_rect = self.actual_stack_image.get_rect(center=self.coordinate_point.get_coordinates())
+
+    def is_colliding_with_mouse(self):
+        return self.actual_stack_image_rect.collidepoint(pygame.mouse.get_pos())
 
     def update(self):
         self.set_image_to_actual()
@@ -35,6 +42,8 @@ class StackOfTokens:
 
     def display(self, screen):
         screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
+        if self.is_colliding_with_mouse():
+            screen.blit(self.highlight_frame, self.highlight_rect)
 
     def is_possible_to_add_token_to_action_field(self):
         if len(self.action_field.tokens_on_action_field) == 1 and \
