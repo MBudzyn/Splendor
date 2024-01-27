@@ -16,7 +16,7 @@ class SixStackOfTokens:
 
     def display(self):
         for stack in self.stacks.values():
-            stack.display(self.screen)
+            stack.display()
 
     def update(self):
         for stack in self.stacks.values():

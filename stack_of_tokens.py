@@ -1,7 +1,6 @@
 from token import Token
 from point import Point
 import pygame
-from action_field import ActionField
 
 
 class StackOfTokens:
@@ -40,10 +39,10 @@ class StackOfTokens:
             self.action_field.add_token(self.get_token())
             self.update()
 
-    def display(self, screen):
-        screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
+    def display(self):
+        self.screen.blit(self.actual_stack_image, self.actual_stack_image_rect)
         if self.is_colliding_with_mouse():
-            screen.blit(self.highlight_frame, self.highlight_rect)
+            self.screen.blit(self.highlight_frame, self.highlight_rect)
 
     def is_possible_to_add_token_to_action_field(self):
         if len(self.action_field.tokens_on_action_field) == 1 and \

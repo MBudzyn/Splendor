@@ -36,7 +36,6 @@ class MenuScene(Scene):
         self.action_field.three_rows_of_cards = self.three_rows_of_cards
         self.action_field.six_stacks_of_tokens = self.six_stacks_of_tokens
 
-
     def handle_events(self):
         import pygame
         for event in pygame.event.get():
@@ -51,7 +50,6 @@ class MenuScene(Scene):
         self.three_rows_of_cards.update()
         self.action_field.update()
         self.six_stacks_of_tokens.update()
-
     def display(self):
         self.mata.display()
         self.action_field.display()
