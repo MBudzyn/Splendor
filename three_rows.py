@@ -19,6 +19,7 @@ class ThreeRows:
     def display(self):
         for row in self.rows.values():
             row.display()
+
     def update(self):
         for row in self.rows.values():
             row.update()

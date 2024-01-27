@@ -1,17 +1,12 @@
-
-
+from button import Button
+from point import Point
 
 class Token:
     def __init__(self, color, screen, is_universal=False, coordinates=None):
-        import pygame
         self.color = color
         self.is_universal = is_universal
         self.coordinates = coordinates
-        self.screen = screen
-        self.graphics = f"graphics/{color}_token.png"
-        self.actual_image = pygame.image.load(self.graphics)
-        self.actual_image_rect = self.actual_image.get_rect(center=(600, 600))
+        self.button = Button(Point(600,600),f"graphics/{color}_token.png",screen)
 
-
-    def display(self, screen):
-        screen.blit(self.actual_image, self.actual_image_rect)
+    def display(self):
+        self.button.display()

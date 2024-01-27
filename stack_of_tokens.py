@@ -11,7 +11,7 @@ class StackOfTokens:
         self.color = color
         self.amount = amount
         self.is_universal = is_universal
-        self.tokens = [Token(color, is_universal) for _ in range(amount)]
+        self.tokens = [Token(color, screen, is_universal) for _ in range(amount)]
         self.graphics_links = [f"graphics/{color}_token{i}.png" for i in range(8)]
         self.max_amount = 7
         self.coordinate_point = coordinate_point
@@ -69,5 +69,5 @@ class StackOfTokens:
 
     def add_token(self):
         if self.is_possible_to_add_token():
-            self.tokens.append(Token(self.color, self.is_universal))
+            self.tokens.append(Token(self.color, self.screen, self.is_universal))
             self.amount += 1

@@ -32,7 +32,7 @@ class ActionField:
         self.back_button.display()
         self.fill_rows_button.display()
         for _token in self.tokens_on_action_field:
-            _token.display(self.screen)
+            _token.display()
         for _card in self.cards_on_action_field:
             _card.display()
 
@@ -103,5 +103,5 @@ class ActionField:
     def add_token(self, _token):
         if type(_token) == Token and self.token_can_be_added(_token):
             self.tokens_on_action_field.append(_token)
-            _token.actual_image_rect.center = self.actual_token_position.get_coordinates()
+            _token.button.set_coordinates(self.actual_token_position)
             self.actual_token_position.increase_coordinates(50, 0)

@@ -1,9 +1,7 @@
-import pygame
-
 
 class Button:
     def __init__(self, coordinate_point, graphics, screen, alt_graphics = None):
-
+        import pygame
         self.screen = screen
         self.coordinate_point = coordinate_point
         self.graphics = pygame.image.load(graphics)
@@ -23,14 +21,17 @@ class Button:
             self.screen.blit(self.highlighted_button, self.highlighted_button_rect)
 
     def set_graphic(self, graphic):
+        import pygame
         self.graphics = pygame.image.load(graphic)
         self.button = self.graphics
         self.button_rect = self.button.get_rect(center=self.coordinate_point.get_coordinates())
 
     def is_colliding_with_mouse(self):
+        import pygame
         return self.button_rect.collidepoint(pygame.mouse.get_pos())
 
     def highlight(self):
+        import pygame
         if self.button_rect.collidepoint(pygame.mouse.get_pos()) and self.have_alt_graphic:
             self.is_highlighted = True
         else:
@@ -40,6 +41,7 @@ class Button:
         self.highlight()
 
     def set_coordinates_to_mouse(self):
+        import pygame
         self.button_rect.center = pygame.mouse.get_pos()
 
     def set_coordinates(self, coordinate_point):
