@@ -7,3 +7,7 @@ class Game:
             self.scene_manager.handle_events()
             self.scene_manager.update()
             self.scene_manager.display()
+
+
+
+
