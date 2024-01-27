@@ -27,3 +27,8 @@ class PlayerCards:
 
     def get_discount_dict(self):
         return self.discount_dict
+
+    def display(self):
+        for cards in self.cards_container.values():
+            for card in cards:
+                card.display()
