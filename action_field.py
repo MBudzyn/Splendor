@@ -1,4 +1,4 @@
-import pygame.image
+
 from token import Token
 from point import Point
 from button import Button
@@ -52,7 +52,7 @@ class ActionField:
     def return_card_to_row(self):
         if self.cards_on_action_field:
             self.three_rows_of_cards.add_card_to_correct_row(self.get_card())
-            self.three_rows_of_cards.change_cards_coordinates()
+            self.three_rows_of_cards.change_cards_coordinates_to_correct()
 
     def return_token_to_stack(self):
         for token in self.tokens_on_action_field:

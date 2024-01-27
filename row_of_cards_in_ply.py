@@ -12,7 +12,7 @@ class RowOfCards:
         self.cards: list[Card] = []
         self.deck_of_cards = deck_of_cards
         self.fill_from_deck()
-        self.change_cards_coordinates()
+        self.change_cards_coordinates_to_correct()
 
     def display(self):
         for _card in self.cards:
@@ -22,7 +22,7 @@ class RowOfCards:
         for i in range(4):
             self.add_from_top_of_deck()
 
-    def change_cards_coordinates(self):
+    def change_cards_coordinates_to_correct(self):
         for i in range(len(self.cards)):
             self.cards[i].card_button.set_coordinates(Point(100 + i * 150, self.lvl * 200 + 75))
 

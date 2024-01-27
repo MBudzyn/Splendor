@@ -12,9 +12,9 @@ class ThreeRows:
     def add_card_to_correct_row(self, card: Card):
         self.rows[card.lvl].add_card(card)
 
-    def change_cards_coordinates(self):
+    def change_cards_coordinates_to_correct(self):
         for row in self.rows.values():
-            row.change_cards_coordinates()
+            row.change_cards_coordinates_to_correct()
 
     def display(self):
         for row in self.rows.values():
@@ -30,4 +30,4 @@ class ThreeRows:
     def fill_from_decks(self):
         for row in self.rows.values():
             row.fill_from_deck()
-            row.change_cards_coordinates()
+            row.change_cards_coordinates_to_correct()
