@@ -15,9 +15,8 @@ class StackOfTokens:
         self.graphics_links = [f"graphics/{color}_token{i}.png" for i in range(8)]
         self.max_amount = 7
         self.coordinate_point = coordinate_point
-        self.stack_button = Button(self.coordinate_point, f"graphics/{color}_token0.png",
+        self.stack_button = Button(self.coordinate_point, f"graphics/{color}_token{self.max_amount}.png",
                                    screen, "graphics/token_highlight.png")
-        self.set_image_to_actual()
         self.screen = screen
         self.action_field = action_field
 
