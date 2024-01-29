@@ -42,10 +42,6 @@ class ActionField:
             self.clear_action_field()
 
 
-    def get_card(self):
-        if self.cards_on_action_field:
-            return self.cards_on_action_field[0]
-
     def remove_and_get_card(self):
         if self.cards_on_action_field:
             return self.cards_on_action_field.pop()
@@ -54,16 +50,6 @@ class ActionField:
         tokens = self.tokens_on_action_field
         self.clear_tokens_on_action_field()
         return tokens
-
-    def return_card_to_row(self):
-        if self.cards_on_action_field:
-            self.three_rows_of_cards.add_card_to_correct_row(self.get_card())
-            self.three_rows_of_cards.change_cards_coordinates_to_correct()
-
-    def return_token_to_stack(self):
-        for token in self.tokens_on_action_field:
-            self.six_stacks_of_tokens.add_token_to_correct_stack(token)
-
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
         self.actual_token_position.set_coordinates(750, 500)
