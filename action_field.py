@@ -9,12 +9,14 @@ class ActionField:
     def __init__(self, screen):
         self.screen = screen
         self.tokens_on_action_field: list[Token] = []
+        self.player_tokens_on_action_field: list[Token] = []
         self.actual_token_position = Point(750, 500)
         self.actual_card_position = Point(750, 600)
         self.action_field_button = Button(Point(1000, 500), "graphics/action_field.png", screen)
         self.clear_field_button = Button(Point(1000, 420), "graphics/clear_button.png", screen,
                                          "graphics/clear_alt_button.png")
         self.back_button = Button(Point(1000, 600), "graphics/back.png", screen, "graphics/clear_alt_button.png")
+        self.destroy_player_tokens_button = Button(Point(1250, 500), "graphics/back.png", screen, "graphics/clear_alt_button.png")
         self.cards_on_action_field: list[Card] = []
         self.fill_rows_button = Button(Point(1000, 300),"graphics/fill_rows.png", screen,"graphics/clear_alt_button.png")
 
@@ -23,21 +25,27 @@ class ActionField:
         self.clear_field_button.update()
         self.back_button.update()
         self.fill_rows_button.update()
+        self.destroy_player_tokens_button.update()
 
     def display(self):
         self.action_field_button.display()
         self.clear_field_button.display()
         self.back_button.display()
         self.fill_rows_button.display()
+        self.destroy_player_tokens_button.display()
         for _token in self.tokens_on_action_field:
             _token.display()
         for _card in self.cards_on_action_field:
             _card.display()
 
-
+    def clear_player_tokens_on_action_field(self):
+        self.player_tokens_on_action_field = []
     def click_events(self):
         if self.clear_field_button.is_colliding_with_mouse():
             self.clear_action_field()
+        if self.destroy_player_tokens_button.is_colliding_with_mouse():
+            self.clear_player_tokens_on_action_field()
+
 
 
     def remove_and_get_card(self):

@@ -1,7 +1,7 @@
 class ColorDict:
     def __init__(self):
-        self.dict_with_colors = self.cost = {"red": 0, "blue": 0, "black": 0,
-                                             "white": 0, "green": 0, "special": 0}
+        self.dict_with_colors = self.cost = {"red": 5, "blue": 4, "black": 0,
+                                             "white": 0, "green": 3, "special": 0}
 
     def get_dict(self):
         return self.dict_with_colors

@@ -45,10 +45,18 @@ class PlayerTokens:
     def add_token(self, token: Token):
         self.tokens.increase_color_value(token.color, 1)
 
-    def is_possible_to_remove_token(self, token: Token):
-        if self.tokens.get_dict()[token.color] > 0:
+    def is_possible_to_remove_token(self, color):
+        if self.tokens.get_dict()[color] > 0:
             return True
         return False
 
-    def remove_token(self, token: Token):
-        self.tokens.increase_color_value(token.color, -1)
+    def remove_token(self, color):
+        if self.is_possible_to_remove_token(color):
+            self.tokens.increase_color_value(color, -1)
+
+    def click_events(self):
+        for color, stack_button in self.stacks_buttons.items():
+            if stack_button.is_colliding_with_mouse():
+                self.remove_token(color)
+
+

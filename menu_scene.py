@@ -45,6 +45,7 @@ class MenuScene(Scene):
                 self.action_field.click_events()
                 self.six_stacks_of_tokens.click_events()
                 self.three_rows_of_cards.click_events()
+                self.player_one.click_events()
     def update(self):
         self.three_rows_of_cards.update()
         self.action_field.update()
