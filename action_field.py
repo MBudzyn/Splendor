@@ -40,8 +40,7 @@ class ActionField:
     def click_events(self):
         if self.clear_field_button.is_colliding_with_mouse():
             self.clear_action_field()
-        if self.fill_rows_button.is_colliding_with_mouse():
-            self.three_rows_of_cards.fill_from_decks()
+
 
     def get_card(self):
         if self.cards_on_action_field:
