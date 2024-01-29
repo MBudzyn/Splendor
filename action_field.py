@@ -40,15 +40,21 @@ class ActionField:
     def click_events(self):
         if self.clear_field_button.is_colliding_with_mouse():
             self.clear_action_field()
-        if self.back_button.is_colliding_with_mouse():
-            self.return_card_to_row()
-            self.return_token_to_stack()
-            self.clear_action_field()
         if self.fill_rows_button.is_colliding_with_mouse():
             self.three_rows_of_cards.fill_from_decks()
+
     def get_card(self):
         if self.cards_on_action_field:
             return self.cards_on_action_field[0]
+
+    def remove_and_get_card(self):
+        if self.cards_on_action_field:
+            return self.cards_on_action_field.pop()
+
+    def remove_and_return_all_tokens(self):
+        tokens = self.tokens_on_action_field
+        self.clear_tokens_on_action_field()
+        return tokens
 
     def return_card_to_row(self):
         if self.cards_on_action_field:

@@ -25,7 +25,7 @@ class MenuScene(Scene):
         self.mata = Button(Point(0,0), "graphics/mata.png", screen)
         self.three_rows_of_cards = ThreeRows(RowOfCards(1, screen, self.action_field, self.first_deck_of_cards),
                                              RowOfCards(2, screen, self.action_field, self.second_deck_of_cards),
-                                             RowOfCards(3, screen, self.action_field, self.third_deck_of_cards))
+                                             RowOfCards(3, screen, self.action_field, self.third_deck_of_cards),self.action_field)
 
         self.six_stacks_of_tokens = SixStackOfTokens(StackOfTokens("blue", 7, screen, self.action_field, Point(500,50)),
                                                      StackOfTokens("green", 7, screen, self.action_field,Point(600, 50)),
@@ -33,7 +33,7 @@ class MenuScene(Scene):
                                                      StackOfTokens("white", 7, screen, self.action_field,Point(800, 50)),
                                                      StackOfTokens("black", 7, screen, self.action_field, Point(700, 50)),
                                                      StackOfTokens("special", 5, screen, self.action_field, Point(900, 50)),
-                                                     self.screen)
+                                                     self.screen,self.action_field)
 
         self.action_field.three_rows_of_cards = self.three_rows_of_cards
         self.action_field.six_stacks_of_tokens = self.six_stacks_of_tokens

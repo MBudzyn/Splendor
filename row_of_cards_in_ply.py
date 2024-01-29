@@ -58,6 +58,8 @@ class RowOfCards:
             if card.card_button.is_colliding_with_mouse():
                 self.place_in_action_field(card)
 
+
+
     def add_from_top_of_deck(self):
         if self.deck_of_cards.is_possible_to_remove_card() and self.is_possible_to_add_card():
             self.add_card(self.deck_of_cards.remove_card_from_top())
