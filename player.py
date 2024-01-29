@@ -11,6 +11,7 @@ class Player:
     def display(self):
         self.player_cards.display()
         self.player_tokens.display()
+
     def update(self):
         self.player_cards.update()
         self.player_tokens.update()
