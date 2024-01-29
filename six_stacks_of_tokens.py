@@ -28,6 +28,8 @@ class SixStackOfTokens:
         for stack in self.stacks.values():
             stack.display()
 
+
+
     def update(self):
         for stack in self.stacks.values():
             stack.update()
