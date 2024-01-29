@@ -9,6 +9,7 @@ from row_of_cards_in_ply import RowOfCards
 from button import Button
 from three_rows import ThreeRows
 from six_stacks_of_tokens import SixStackOfTokens
+from player import Player
 
 
 class MenuScene(Scene):
@@ -16,6 +17,7 @@ class MenuScene(Scene):
         super().__init__(screen)
         self.screen = screen
         self.scene_man = scene_man
+        self.player_one = Player("Player One", screen)
         self.action_field = ActionField(screen)
         self.first_deck_of_cards = DeckOfCards(screen, 1, "graphics/deck_of_cards.png", Point(1300, 200))
         self.second_deck_of_cards = DeckOfCards(screen, 2, "graphics/deck_of_cards.png", Point(1300, 200))
@@ -50,9 +52,11 @@ class MenuScene(Scene):
         self.three_rows_of_cards.update()
         self.action_field.update()
         self.six_stacks_of_tokens.update()
+        self.player_one.update()
     def display(self):
         self.mata.display()
         self.action_field.display()
         self.three_rows_of_cards.display()
         self.six_stacks_of_tokens.display()
+        self.player_one.display()
 

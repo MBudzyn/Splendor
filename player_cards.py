@@ -32,3 +32,8 @@ class PlayerCards:
         for cards in self.cards_container.values():
             for card in cards:
                 card.display()
+
+    def update(self):
+        for cards in self.cards_container.values():
+            for card in cards:
+                card.update()
