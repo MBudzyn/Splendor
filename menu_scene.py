@@ -35,9 +35,6 @@ class MenuScene(Scene):
                                                      StackOfTokens("special", 5, screen, self.action_field, Point(900, 50)),
                                                      self.screen,self.action_field)
 
-        self.action_field.three_rows_of_cards = self.three_rows_of_cards
-        self.action_field.six_stacks_of_tokens = self.six_stacks_of_tokens
-
     def handle_events(self):
         import pygame
         for event in pygame.event.get():
