@@ -27,12 +27,23 @@ class ActionField:
         self.fill_rows_button.update()
         self.destroy_player_tokens_button.update()
 
+    def display_player_tokens_by_colors(self):
+        iterator = 0
+        table = []
+        for color in self.player_tokens_on_action_field:
+            table.append(Token(color, self.screen, False, Point(1200,100 + iterator)))
+            iterator += 50
+        for token in table:
+            token.display()
+
+
     def display(self):
         self.action_field_button.display()
         self.clear_field_button.display()
         self.back_button.display()
         self.fill_rows_button.display()
         self.destroy_player_tokens_button.display()
+        self.display_player_tokens_by_colors()
         for _token in self.tokens_on_action_field:
             _token.display()
         for _card in self.cards_on_action_field:
@@ -40,13 +51,15 @@ class ActionField:
 
     def clear_player_tokens_on_action_field(self):
         self.player_tokens_on_action_field = []
+
     def click_events(self):
         if self.clear_field_button.is_colliding_with_mouse():
             self.clear_action_field()
         if self.destroy_player_tokens_button.is_colliding_with_mouse():
             self.clear_player_tokens_on_action_field()
 
-
+    def add_color_to_player_tokens(self,color):
+        self.player_tokens_on_action_field.append(color)
 
     def remove_and_get_card(self):
         if self.cards_on_action_field:

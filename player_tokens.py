@@ -5,7 +5,8 @@ from point import Point
 
 
 class PlayerTokens:
-    def __init__(self, screen):
+    def __init__(self, screen, action_field):
+        self.action_field = action_field
         self.screen = screen
         self.tokens: ColorDict = ColorDict()
         self.tokens_graphics = {"red": [f"graphics/red_token{i}.png" for i in range(8)],
@@ -50,6 +51,14 @@ class PlayerTokens:
             return True
         return False
 
+    def add_token_to_action_field(self, color):
+        self.action_field.add_color_to_player_tokens(color)
+
+    def if_possible_place_in_action_field(self, color):
+        if self.is_possible_to_remove_token(color):
+            self.add_token_to_action_field(color)
+            self.remove_token(color)
+            
     def remove_token(self, color):
         if self.is_possible_to_remove_token(color):
             self.tokens.increase_color_value(color, -1)
@@ -57,6 +66,6 @@ class PlayerTokens:
     def click_events(self):
         for color, stack_button in self.stacks_buttons.items():
             if stack_button.is_colliding_with_mouse():
-                self.remove_token(color)
+                self.if_possible_place_in_action_field(color)
 
 

@@ -2,11 +2,11 @@
 from player_cards import PlayerCards
 from player_tokens import PlayerTokens
 class Player:
-    def __init__(self, nick_name, screen):
+    def __init__(self, nick_name, screen, action_field):
         self.nick_name = nick_name
         self.screen = screen
         self.player_cards = PlayerCards()
-        self.player_tokens = PlayerTokens(screen)
+        self.player_tokens = PlayerTokens(screen,action_field)
 
     def display(self):
         self.player_cards.display()

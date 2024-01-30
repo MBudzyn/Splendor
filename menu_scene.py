@@ -17,8 +17,8 @@ class MenuScene(Scene):
         super().__init__(screen)
         self.screen = screen
         self.scene_man = scene_man
-        self.player_one = Player("Player One", screen)
         self.action_field = ActionField(screen)
+        self.player_one = Player("Player One", screen, self.action_field)
         self.first_deck_of_cards = DeckOfCards(screen, 1, "graphics/deck_of_cards.png", Point(1300, 200))
         self.second_deck_of_cards = DeckOfCards(screen, 2, "graphics/deck_of_cards.png", Point(1300, 200))
         self.third_deck_of_cards = DeckOfCards(screen, 3, "graphics/deck_of_cards.png", Point(1300, 200))
