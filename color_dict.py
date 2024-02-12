@@ -1,7 +1,10 @@
 class ColorDict:
-    def __init__(self):
+    def __init__(self,is_empty = False):
         self.dict_with_colors = self.cost = {"red": 7, "blue": 7, "black": 7,
                                              "white": 7, "green": 7, "special": 5}
+        if is_empty:
+            self.dict_with_colors = self.cost = {"red": 0, "blue": 0, "black": 0,
+                                                 "white": 0, "green": 0, "special": 0}
 
     def get_dict(self):
         return self.dict_with_colors

@@ -9,7 +9,7 @@ class PlayerTokens:
     def __init__(self, screen, action_field):
         self.action_field = action_field
         self.screen = screen
-        self.tokens: ColorDict = ColorDict()
+        self.tokens: ColorDict = ColorDict(True)
         self.tokens_graphics = {"red": [f"graphics/red_token{i}.png" for i in range(8)],
                                 "blue": [f"graphics/blue_token{i}.png" for i in range(8)],
                                 "green": [f"graphics/green_token{i}.png" for i in range(8)],
