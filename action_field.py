@@ -10,6 +10,7 @@ class ActionField:
     def __init__(self, screen):
         self.screen = screen
         self.tokens_on_action_field: list[Token] = []
+        self.game_tokens_on_action_field: list[str] = []
         self.player_tokens_on_action_field: list[Token] = []
         self.actual_token_position = Point((750, 500))
         self.actual_card_position = Point((750, 600))
@@ -28,12 +29,21 @@ class ActionField:
         self.fill_rows_button.update()
         self.destroy_player_tokens_button.update()
 
-    def display_player_tokens_by_colors(self):
+    def display_player_tokens(self):
         table = []
         i = 0
         for color in self.player_tokens_on_action_field:
             table.append(Token(color, self.screen, False, Point(ALL_PLAYER_TOKENS_ON_ACTION_FIELD_COORDINATES[i])))
             i+=1
+        for token in table:
+            token.display()
+
+    def display_game_tokens(self):
+        table = []
+        i = 0
+        for color in self.game_tokens_on_action_field:
+            table.append(Token(color, self.screen, False, Point(ALL_GAME_TOKENS_ON_ACTION_FIELD_COORDINATES[i])))
+            i += 1
         for token in table:
             token.display()
 
@@ -44,11 +54,9 @@ class ActionField:
         self.back_button.display()
         self.fill_rows_button.display()
         self.destroy_player_tokens_button.display()
-        self.display_player_tokens_by_colors()
-        for _token in self.tokens_on_action_field:
-            _token.display()
-        for _card in self.cards_on_action_field:
-            _card.display()
+        self.display_player_tokens()
+        self.display_game_tokens()
+
 
     def clear_player_tokens_on_action_field(self):
         self.player_tokens_on_action_field = []
@@ -62,15 +70,19 @@ class ActionField:
 
     def add_color_to_player_tokens(self,color):
         self.player_tokens_on_action_field.append(color)
+    def add_color_to_game_tokens(self,color):
+        self.game_tokens_on_action_field.append(color)
+
 
     def remove_and_get_card(self):
         if self.cards_on_action_field:
             return self.cards_on_action_field.pop()
 
-    def remove_and_return_all_tokens(self):
-        tokens = self.tokens_on_action_field
-        self.clear_tokens_on_action_field()
+    def remove_and_return_all_game_tokens(self):
+        tokens = self.game_tokens_on_action_field
+        self.game_tokens_on_action_field = []
         return tokens
+
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
         self.actual_token_position.set_coordinates(750, 500)
@@ -83,22 +95,13 @@ class ActionField:
         self.cards_on_action_field = []
         self.actual_card_position.set_coordinates(750, 600)
 
-    def token_can_be_added(self, token: Token):
-        if token.color == "special" and len(self.tokens_on_action_field) != 0:
-            return False
-        if not len(self.tokens_on_action_field) < 3:
-            return False
-        if len(self.tokens_on_action_field) == 1 and self.tokens_on_action_field[0].color == token.color:
+
+    def game_token_can_be_added(self, color):
+        if len(self.game_tokens_on_action_field) < 3:
             return True
-        if len(self.tokens_on_action_field) == 1 and self.tokens_on_action_field[0].color == "special":
-            return False
-        if len(self.tokens_on_action_field) == 2:
-            if self.tokens_on_action_field[0].color == self.tokens_on_action_field[1].color:
-                return False
-        for _token in self.tokens_on_action_field:
-            if _token.color == token.color:
-                return False
-        return True
+        if len(self.game_tokens_on_action_field) == 1 and self.game_tokens_on_action_field[0] == color:
+            return True
+        return False
 
     def card_can_be_added(self):
         if not self.cards_on_action_field:
@@ -106,15 +109,7 @@ class ActionField:
                 return True
         return False
 
-
-
     def add_card(self, _card: Card):
         if self.card_can_be_added():
             self.cards_on_action_field.append(_card)
             _card.card_button.set_coordinates(self.actual_token_position)
-
-    def add_token(self, _token):
-        if type(_token) == Token and self.token_can_be_added(_token):
-            self.tokens_on_action_field.append(_token)
-            _token.button.set_coordinates(self.actual_token_position)
-            self.actual_token_position.increase_coordinates(50, 0)

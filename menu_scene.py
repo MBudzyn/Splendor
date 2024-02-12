@@ -1,15 +1,14 @@
 
 from scene import *
 import sys
-from stack_of_tokens import StackOfTokens
 from action_field import ActionField
 from point import Point
 from deck_of_cards import DeckOfCards
 from row_of_cards_in_ply import RowOfCards
 from button import Button
 from three_rows import ThreeRows
-from six_stacks_of_tokens import SixStackOfTokens
 from player import Player
+from game_tokens import GameTokens
 
 
 class MenuScene(Scene):
@@ -26,15 +25,7 @@ class MenuScene(Scene):
         self.three_rows_of_cards = ThreeRows(RowOfCards(1, screen, self.action_field, self.first_deck_of_cards),
                                              RowOfCards(2, screen, self.action_field, self.second_deck_of_cards),
                                              RowOfCards(3, screen, self.action_field, self.third_deck_of_cards),self.action_field)
-
-        self.six_stacks_of_tokens = SixStackOfTokens(StackOfTokens("blue", 7, screen, self.action_field, Point((500,50))),
-                                                     StackOfTokens("green", 7, screen, self.action_field,Point((600, 50))),
-                                                     StackOfTokens("red", 7, screen, self.action_field, Point((400, 50))),
-                                                     StackOfTokens("white", 7, screen, self.action_field,Point((800, 50))),
-                                                     StackOfTokens("black", 7, screen, self.action_field, Point((700, 50))),
-                                                     StackOfTokens("special", 5, screen, self.action_field, Point((900, 50))),
-                                                     self.screen,self.action_field)
-
+        self.six_stacks_of_tokens = GameTokens(screen, self.action_field)
     def handle_events(self):
         import pygame
         for event in pygame.event.get():
