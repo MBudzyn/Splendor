@@ -15,17 +15,20 @@ class ActionField:
         self.actual_token_position = Point((750, 500))
         self.actual_card_position = Point((750, 600))
         self.action_field_button = Button(Point((1000, 500)), "graphics/action_field.png", screen)
-        self.clear_field_button = Button(Point((1000, 420)), "graphics/clear_button.png", screen,
+        self.buy_card_button = Button(Point(BUY_CARD_BUTTON_COORDINATES), "graphics/buy_card.png", screen,
                                          "graphics/clear_alt_button.png")
-        self.back_button = Button(Point((1000, 600)), "graphics/back.png", screen, "graphics/clear_alt_button.png")
-        self.destroy_player_tokens_button = Button(Point((1250, 500)), "graphics/back.png", screen, "graphics/clear_alt_button.png")
+        self.take_tokens_button = Button(Point(TAKE_TOKENS_BUTTON_COORDINATES), "graphics/take_tokens.png", screen,
+                               "graphics/clear_alt_button.png")
+        self.reserve_card_button = Button(Point(RESERVE_CARD_BUTTON_COORDINATES), "graphics/reserve_card.png", screen, "graphics/clear_alt_button.png")
+        self.destroy_player_tokens_button = Button(Point(DESTROY_PLAYER_TOKENS_BUTTON_COORDINATES), "graphics/destroy_tokens.png", screen, "graphics/clear_alt_button.png")
         self.cards_on_action_field: list[Card] = []
-        self.fill_rows_button = Button(Point((1000, 300)),"graphics/fill_rows.png", screen,"graphics/clear_alt_button.png")
+        self.fill_rows_button = Button(Point(FILL_ROWS_BUTTON_COORDINATES),"graphics/fill_rows.png", screen,"graphics/clear_alt_button.png")
 
     def update(self):
         self.action_field_button.update()
-        self.clear_field_button.update()
-        self.back_button.update()
+        self.take_tokens_button.update()
+        self.buy_card_button.update()
+        self.reserve_card_button.update()
         self.fill_rows_button.update()
         self.destroy_player_tokens_button.update()
 
@@ -50,8 +53,9 @@ class ActionField:
 
     def display(self):
         self.action_field_button.display()
-        self.clear_field_button.display()
-        self.back_button.display()
+        self.buy_card_button.display()
+        self.reserve_card_button.display()
+        self.take_tokens_button.display()
         self.fill_rows_button.display()
         self.destroy_player_tokens_button.display()
         self.display_player_tokens()
@@ -65,8 +69,8 @@ class ActionField:
 
 
     def click_events(self):
-        if self.clear_field_button.is_colliding_with_mouse():
-            self.clear_action_field()
+        if self.destroy_player_tokens_button.is_colliding_with_mouse():
+            self.clear_player_tokens_on_action_field()
         if self.destroy_player_tokens_button.is_colliding_with_mouse():
             self.clear_player_tokens_on_action_field()
 

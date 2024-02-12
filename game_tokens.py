@@ -74,6 +74,6 @@ class GameTokens:
                 self.if_possible_place_in_action_field(color)
 
     def click_events_on_action_field(self):
-        if self.action_field.back_button.is_colliding_with_mouse():
+        if self.action_field.destroy_player_tokens_button.is_colliding_with_mouse():
             for color in self.action_field.remove_and_return_all_game_tokens():
                 self.add_token(color)
