@@ -34,7 +34,7 @@ class ActionField:
         i = 0
         for color in self.player_tokens_on_action_field:
             table.append(Token(color, self.screen, False, Point(ALL_PLAYER_TOKENS_ON_ACTION_FIELD_COORDINATES[i])))
-            i+=1
+            i += 1
         for token in table:
             token.display()
 
@@ -56,6 +56,8 @@ class ActionField:
         self.destroy_player_tokens_button.display()
         self.display_player_tokens()
         self.display_game_tokens()
+        for card in self.cards_on_action_field:
+            card.display()
 
 
     def clear_player_tokens_on_action_field(self):
@@ -97,11 +99,19 @@ class ActionField:
 
 
     def game_token_can_be_added(self, color):
-        if len(self.game_tokens_on_action_field) < 3:
-            return True
-        if len(self.game_tokens_on_action_field) == 1 and self.game_tokens_on_action_field[0] == color:
-            return True
-        return False
+        if len(self.game_tokens_on_action_field) > 2:
+            return False
+        if len(self.game_tokens_on_action_field) == 2:
+            if self.game_tokens_on_action_field[0] == self.game_tokens_on_action_field[1]:
+                return False
+            if self.game_tokens_on_action_field[0] == color or self.game_tokens_on_action_field[1] == color:
+                return False
+        if len(self.game_tokens_on_action_field) > 0 and color == "special":
+            return False
+        if len(self.game_tokens_on_action_field) > 0 and self.game_tokens_on_action_field[0] == "special":
+            return False
+        return True
+
 
     def card_can_be_added(self):
         if not self.cards_on_action_field:
