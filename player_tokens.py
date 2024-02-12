@@ -60,7 +60,7 @@ class PlayerTokens:
         self.action_field.add_color_to_player_tokens(color)
 
     def if_possible_place_in_action_field(self, color):
-        if self.is_possible_to_remove_token(color):
+        if self.is_possible_to_remove_token(color) and self.action_field.player_token_can_be_added():
             self.add_token_to_action_field(color)
             self.remove_token(color)
             

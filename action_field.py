@@ -12,7 +12,6 @@ class ActionField:
         self.tokens_on_action_field: list[Token] = []
         self.game_tokens_on_action_field: list[str] = []
         self.player_tokens_on_action_field: list[Token] = []
-        self.action_field_button = Button(Point((1000, 500)), "graphics/action_field.png", screen)
         self.buy_card_button = Button(Point(BUY_CARD_BUTTON_COORDINATES), "graphics/buy_card.png", screen,
                                          "graphics/clear_alt_button.png")
         self.take_tokens_button = Button(Point(TAKE_TOKENS_BUTTON_COORDINATES), "graphics/take_tokens.png", screen,
@@ -23,7 +22,6 @@ class ActionField:
         self.fill_rows_button = Button(Point(FILL_ROWS_BUTTON_COORDINATES),"graphics/fill_rows.png", screen,"graphics/clear_alt_button.png")
 
     def update(self):
-        self.action_field_button.update()
         self.take_tokens_button.update()
         self.buy_card_button.update()
         self.reserve_card_button.update()
@@ -50,7 +48,6 @@ class ActionField:
 
 
     def display(self):
-        self.action_field_button.display()
         self.buy_card_button.display()
         self.reserve_card_button.display()
         self.take_tokens_button.display()
@@ -74,6 +71,11 @@ class ActionField:
         self.player_tokens_on_action_field.append(color)
     def add_color_to_game_tokens(self,color):
         self.game_tokens_on_action_field.append(color)
+
+    def player_token_can_be_added(self):
+        if len(self.game_tokens_on_action_field) == 0:
+            return True
+        return False
 
 
     def remove_and_get_card(self):
@@ -104,6 +106,8 @@ class ActionField:
 
 
     def game_token_can_be_added(self, color):
+        if len(self.player_tokens_on_action_field) > 0:
+            return False
         if len(self.game_tokens_on_action_field) > 2:
             return False
         if len(self.game_tokens_on_action_field) == 2:

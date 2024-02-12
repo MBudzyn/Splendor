@@ -48,8 +48,6 @@ class GameTokens:
     def add_token(self, color):
         self.tokens.increase_color_value(color, 1)
 
-
-
     def is_possible_to_remove_token(self, color):
         if self.tokens.get_dict()[color] > 0:
             return True
