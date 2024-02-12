@@ -2,6 +2,7 @@ from token import Token
 from color_dict import ColorDict
 from button import Button
 from point import Point
+from Global import *
 
 
 class PlayerTokens:
@@ -17,17 +18,17 @@ class PlayerTokens:
                                 "special": [f"graphics/special_token{i}.png" for i in range(8)]}
 
         self.stacks_buttons = {
-            "red": Button(Point((700, 700)), f"graphics/red_token0.png",
+            "red": Button(Point(PLAYER_RED_STACK_COORDINATES), f"graphics/red_token0.png",
                           screen, "graphics/token_highlight.png"),
-            "blue": Button(Point((775, 700)), f"graphics/blue_token0.png",
+            "blue": Button(Point(PLAYER_BLUE_STACK_COORDINATES), f"graphics/blue_token0.png",
                            screen, "graphics/token_highlight.png"),
-            "green": Button(Point((850, 700)),f"graphics/green_token0.png",
+            "green": Button(Point(PLAYER_GREEN_STACK_COORDINATES),f"graphics/green_token0.png",
                             screen, "graphics/token_highlight.png"),
-            "black": Button(Point((925, 700)), f"graphics/black_token0.png",
+            "black": Button(Point(PLAYER_BLACK_STACK_COORDINATES), f"graphics/black_token0.png",
                             screen, "graphics/token_highlight.png"),
-            "white": Button(Point((1000, 700)), f"graphics/white_token0.png",
+            "white": Button(Point(PLAYER_WHITE_STACK_COORDINATES), f"graphics/white_token0.png",
                             screen, "graphics/token_highlight.png"),
-            "special": Button(Point((1075, 700)), f"graphics/special_token0.png",
+            "special": Button(Point(PLAYER_SPECIAL_STACK_COORDINATES), f"graphics/special_token0.png",
                               screen, "graphics/token_highlight.png")}
 
     def display(self):
