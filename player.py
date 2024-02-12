@@ -16,5 +16,6 @@ class Player:
         self.player_cards.update()
         self.player_tokens.update()
 
+
     def click_events(self):
         self.player_tokens.click_events()

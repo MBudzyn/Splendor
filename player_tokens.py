@@ -3,10 +3,11 @@ from color_dict import ColorDict
 from button import Button
 from point import Point
 from Global import *
+from action_field import ActionField
 
 
 class PlayerTokens:
-    def __init__(self, screen, action_field):
+    def __init__(self, screen, action_field: ActionField):
         self.action_field = action_field
         self.screen = screen
         self.tokens: ColorDict = ColorDict(True)
@@ -35,6 +36,9 @@ class PlayerTokens:
         for stack_button in self.stacks_buttons.values():
             stack_button.display()
 
+    def get_sum_of_tokens(self):
+        return self.tokens.get_sum_of_tokens()
+
     def update(self):
         self.set_correct_image_to_stacks()
         for stack_button in self.stacks_buttons.values():
@@ -44,8 +48,8 @@ class PlayerTokens:
         for color, stack in self.stacks_buttons.items():
             stack.set_graphic(self.tokens_graphics[color][self.tokens.get_dict()[color]])
 
-    def add_token(self, token: Token):
-        self.tokens.increase_color_value(token.color, 1)
+    def add_token(self, color):
+        self.tokens.increase_color_value(color, 1)
 
     def is_possible_to_remove_token(self, color):
         if self.tokens.get_dict()[color] > 0:
@@ -64,7 +68,15 @@ class PlayerTokens:
         if self.is_possible_to_remove_token(color):
             self.tokens.increase_color_value(color, -1)
 
+    def take_tokens_click_event(self):
+        if self.action_field.take_tokens_button.is_colliding_with_mouse():
+            if self.get_sum_of_tokens() + self.action_field.get_sum_of_tokens() <= 10:
+                for color in self.action_field.remove_and_return_all_game_tokens():
+                    self.add_token(color)
+
+
     def click_events(self):
+        self.take_tokens_click_event()
         for color, stack_button in self.stacks_buttons.items():
             if stack_button.is_colliding_with_mouse():
                 self.if_possible_place_in_action_field(color)

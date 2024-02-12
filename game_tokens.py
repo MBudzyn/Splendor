@@ -1,4 +1,4 @@
-from token import Token
+
 from color_dict import ColorDict
 from button import Button
 from point import Point
@@ -76,4 +76,6 @@ class GameTokens:
     def click_events_on_action_field(self):
         if self.action_field.destroy_player_tokens_button.is_colliding_with_mouse():
             for color in self.action_field.remove_and_return_all_game_tokens():
+                self.add_token(color)
+            for color in self.action_field.remove_and_return_all_player_tokens():
                 self.add_token(color)

@@ -67,10 +67,8 @@ class ActionField:
 
 
     def click_events(self):
-        if self.destroy_player_tokens_button.is_colliding_with_mouse():
-            self.clear_player_tokens_on_action_field()
-        if self.destroy_player_tokens_button.is_colliding_with_mouse():
-            self.clear_player_tokens_on_action_field()
+        pass
+
 
     def add_color_to_player_tokens(self,color):
         self.player_tokens_on_action_field.append(color)
@@ -86,6 +84,10 @@ class ActionField:
         tokens = self.game_tokens_on_action_field
         self.game_tokens_on_action_field = []
         return tokens
+    def remove_and_return_all_player_tokens(self):
+        tokens = self.player_tokens_on_action_field
+        self.player_tokens_on_action_field = []
+        return tokens
 
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
@@ -96,6 +98,9 @@ class ActionField:
 
     def clear_cards_on_action_field(self):
         self.cards_on_action_field = []
+
+    def get_sum_of_tokens(self):
+        return len(self.game_tokens_on_action_field)
 
 
     def game_token_can_be_added(self, color):
