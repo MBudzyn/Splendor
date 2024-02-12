@@ -4,3 +4,7 @@ PLAYER_GREEN_STACK_COORDINATES = (850, 700)
 PLAYER_BLACK_STACK_COORDINATES = (925, 700)
 PLAYER_WHITE_STACK_COORDINATES = (1000, 700)
 PLAYER_SPECIAL_STACK_COORDINATES = (1075, 700)
+ALL_PLAYER_TOKENS_ON_ACTION_FIELD_COORDINATES = [(1200,100),(1200,150),(1200,200),
+                                                 (1250,100),(1250,150),(1250,200),
+                                                 (1300,100),(1300,150),(1300,200),
+                                                 (1350,100),(1350,150),(1350,200)]

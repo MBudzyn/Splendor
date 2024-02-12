@@ -3,6 +3,7 @@ from token import Token
 from point import Point
 from button import Button
 from card import Card
+from Global import *
 
 
 class ActionField:
@@ -28,11 +29,11 @@ class ActionField:
         self.destroy_player_tokens_button.update()
 
     def display_player_tokens_by_colors(self):
-        iterator = 0
         table = []
+        i = 0
         for color in self.player_tokens_on_action_field:
-            table.append(Token(color, self.screen, False, Point((1200,100 + iterator))))
-            iterator += 50
+            table.append(Token(color, self.screen, False, Point(ALL_PLAYER_TOKENS_ON_ACTION_FIELD_COORDINATES[i])))
+            i+=1
         for token in table:
             token.display()
 
