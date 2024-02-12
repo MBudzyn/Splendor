@@ -18,8 +18,8 @@ class PlayerCards:
     def add_cart(self, card: Card):
         self.update_discount(card)
         self.update_points_sum(card)
-        card.set_coordinates(Point(self.dict_with_x_coordinates[card.color],
-                                   len(self.cards_container[card.color] * 100)))
+        card.set_coordinates(Point((self.dict_with_x_coordinates[card.color],
+                                   len(self.cards_container[card.color] * 100))))
         self.cards_container[card.color].append(card)
 
     def get_sum_of_points(self):

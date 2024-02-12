@@ -8,7 +8,7 @@ class Token:
         self.is_universal = is_universal
         self.coordinates = coordinates
         if self.coordinates is None:
-            self.coordinates = Point(600,600)
+            self.coordinates = Point((600,600))
         self.button = Button(self.coordinates, f"graphics/{color}_token.png", screen)
 
     def display(self):

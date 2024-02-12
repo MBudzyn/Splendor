@@ -17,17 +17,17 @@ class PlayerTokens:
                                 "special": [f"graphics/special_token{i}.png" for i in range(8)]}
 
         self.stacks_buttons = {
-            "red": Button(Point(700, 700), f"graphics/red_token0.png",
+            "red": Button(Point((700, 700)), f"graphics/red_token0.png",
                           screen, "graphics/token_highlight.png"),
-            "blue": Button(Point(775, 700), f"graphics/blue_token0.png",
+            "blue": Button(Point((775, 700)), f"graphics/blue_token0.png",
                            screen, "graphics/token_highlight.png"),
-            "green": Button(Point(850, 700),f"graphics/green_token0.png",
+            "green": Button(Point((850, 700)),f"graphics/green_token0.png",
                             screen, "graphics/token_highlight.png"),
-            "black": Button(Point(925, 700), f"graphics/black_token0.png",
+            "black": Button(Point((925, 700)), f"graphics/black_token0.png",
                             screen, "graphics/token_highlight.png"),
-            "white": Button(Point(1000, 700), f"graphics/white_token0.png",
+            "white": Button(Point((1000, 700)), f"graphics/white_token0.png",
                             screen, "graphics/token_highlight.png"),
-            "special": Button(Point(1075, 700), f"graphics/special_token0.png",
+            "special": Button(Point((1075, 700)), f"graphics/special_token0.png",
                               screen, "graphics/token_highlight.png")}
 
     def display(self):

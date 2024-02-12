@@ -19,20 +19,20 @@ class MenuScene(Scene):
         self.scene_man = scene_man
         self.action_field = ActionField(screen)
         self.player_one = Player("Player One", screen, self.action_field)
-        self.first_deck_of_cards = DeckOfCards(screen, 1, "graphics/deck_of_cards.png", Point(1300, 200))
-        self.second_deck_of_cards = DeckOfCards(screen, 2, "graphics/deck_of_cards.png", Point(1300, 200))
-        self.third_deck_of_cards = DeckOfCards(screen, 3, "graphics/deck_of_cards.png", Point(1300, 200))
-        self.mata = Button(Point(0,0), "graphics/mata.png", screen)
+        self.first_deck_of_cards = DeckOfCards(screen, 1, "graphics/deck_of_cards.png", Point((1300, 200)))
+        self.second_deck_of_cards = DeckOfCards(screen, 2, "graphics/deck_of_cards.png", Point((1300, 200)))
+        self.third_deck_of_cards = DeckOfCards(screen, 3, "graphics/deck_of_cards.png", Point((1300, 200)))
+        self.mata = Button(Point((0,0)), "graphics/mata.png", screen)
         self.three_rows_of_cards = ThreeRows(RowOfCards(1, screen, self.action_field, self.first_deck_of_cards),
                                              RowOfCards(2, screen, self.action_field, self.second_deck_of_cards),
                                              RowOfCards(3, screen, self.action_field, self.third_deck_of_cards),self.action_field)
 
-        self.six_stacks_of_tokens = SixStackOfTokens(StackOfTokens("blue", 7, screen, self.action_field, Point(500,50)),
-                                                     StackOfTokens("green", 7, screen, self.action_field,Point(600, 50)),
-                                                     StackOfTokens("red", 7, screen, self.action_field, Point(400, 50)),
-                                                     StackOfTokens("white", 7, screen, self.action_field,Point(800, 50)),
-                                                     StackOfTokens("black", 7, screen, self.action_field, Point(700, 50)),
-                                                     StackOfTokens("special", 5, screen, self.action_field, Point(900, 50)),
+        self.six_stacks_of_tokens = SixStackOfTokens(StackOfTokens("blue", 7, screen, self.action_field, Point((500,50))),
+                                                     StackOfTokens("green", 7, screen, self.action_field,Point((600, 50))),
+                                                     StackOfTokens("red", 7, screen, self.action_field, Point((400, 50))),
+                                                     StackOfTokens("white", 7, screen, self.action_field,Point((800, 50))),
+                                                     StackOfTokens("black", 7, screen, self.action_field, Point((700, 50))),
+                                                     StackOfTokens("special", 5, screen, self.action_field, Point((900, 50))),
                                                      self.screen,self.action_field)
 
     def handle_events(self):
