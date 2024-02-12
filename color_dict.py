@@ -9,6 +9,9 @@ class ColorDict:
     def get_dict(self):
         return self.dict_with_colors
 
+    def get_sum_of_tokens(self):
+        return sum(self.dict_with_colors.values())
+
     def increase_color_value(self, color, value):
         self.dict_with_colors[color] += value
 

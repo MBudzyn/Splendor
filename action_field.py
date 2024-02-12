@@ -12,8 +12,6 @@ class ActionField:
         self.tokens_on_action_field: list[Token] = []
         self.game_tokens_on_action_field: list[str] = []
         self.player_tokens_on_action_field: list[Token] = []
-        self.actual_token_position = Point((750, 500))
-        self.actual_card_position = Point((750, 600))
         self.action_field_button = Button(Point((1000, 500)), "graphics/action_field.png", screen)
         self.buy_card_button = Button(Point(BUY_CARD_BUTTON_COORDINATES), "graphics/buy_card.png", screen,
                                          "graphics/clear_alt_button.png")
@@ -91,7 +89,6 @@ class ActionField:
 
     def clear_tokens_on_action_field(self):
         self.tokens_on_action_field = []
-        self.actual_token_position.set_coordinates(750, 500)
 
     def clear_action_field(self):
         self.clear_tokens_on_action_field()
@@ -99,7 +96,6 @@ class ActionField:
 
     def clear_cards_on_action_field(self):
         self.cards_on_action_field = []
-        self.actual_card_position.set_coordinates(750, 600)
 
 
     def game_token_can_be_added(self, color):
@@ -126,4 +122,4 @@ class ActionField:
     def add_card(self, _card: Card):
         if self.card_can_be_added():
             self.cards_on_action_field.append(_card)
-            _card.card_button.set_coordinates(self.actual_token_position)
+            _card.card_button.set_coordinates(Point(CARD_ON_ACTION_FIELD_COORDINATES))
