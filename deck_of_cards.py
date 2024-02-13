@@ -21,6 +21,21 @@ class DeckOfCards:
             self.add_card(
                 Card(Point((200, 200)), f"graphics/card{i % 6 + 1}.png", f"graphics/card_frame.png", self.screen,
                      self.lvl, 0, color))
+        self.add_card(
+            Card(Point((200, 200)), f"graphics/blue_card1.png", f"graphics/card_frame.png", self.screen,
+                 self.lvl, 0, "blue"))
+        self.add_card(
+            Card(Point((200, 200)), f"graphics/green_card1.png", f"graphics/card_frame.png", self.screen,
+                 self.lvl, 0, "green"))
+        self.add_card(
+            Card(Point((200, 200)), f"graphics/white_card1.png", f"graphics/card_frame.png", self.screen,
+                 self.lvl, 0, "white"))
+        self.add_card(
+            Card(Point((200, 200)), f"graphics/red_card1.png", f"graphics/card_frame.png", self.screen,
+                 self.lvl, 0, "red"))
+        
+
+
 
     def is_colliding_with_mouse(self) -> bool:
         return self.deck_button.is_colliding_with_mouse()
