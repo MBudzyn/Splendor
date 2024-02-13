@@ -1,10 +1,11 @@
 from card import Card
 from point import Point
 from action_field import ActionField
+from Global import *
 
 
 class PlayerCards:
-    def __init__(self,action_field: ActionField):
+    def __init__(self, action_field: ActionField):
         self.cards_container: dict[str, list[Card]] = {"red": [], "blue": [], "black": [], "white": [], "green": []}
         self.dict_with_x_coordinates = {"red": 1200, "blue": 450, "black": 600, "white": 750, "green": 900}
         self.points_sum = 0
@@ -26,7 +27,7 @@ class PlayerCards:
             self.update_discount(card)
             self.update_points_sum(card)
             card.set_coordinates(Point((self.dict_with_x_coordinates[card.color],
-                                    ((11 - len(self.cards_container[card.color]))* 75))))
+                                        PLAYER_CARDS_Y_COORDINATES[len(self.cards_container[card.color])])))
             self.cards_container[card.color].append(card)
 
     def get_sum_of_points(self):
