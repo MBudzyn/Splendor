@@ -74,8 +74,15 @@ class PlayerTokens:
                 for color in self.action_field.remove_and_return_all_game_tokens():
                     self.add_token(color)
 
+    def reserve_card_click_event(self):
+        if self.action_field.reserve_card_button.is_colliding_with_mouse():
+            if self.get_sum_of_tokens() + self.action_field.get_sum_of_tokens() <= 10:
+                for color in self.action_field.remove_and_return_all_game_tokens():
+                    self.add_token(color)
+
 
     def click_events(self):
+        self.reserve_card_click_event()
         self.take_tokens_click_event()
         for color, stack_button in self.stacks_buttons.items():
             if stack_button.is_colliding_with_mouse():
