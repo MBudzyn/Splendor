@@ -5,7 +5,7 @@ class Player:
     def __init__(self, nick_name, screen, action_field):
         self.nick_name = nick_name
         self.screen = screen
-        self.player_cards = PlayerCards()
+        self.player_cards = PlayerCards(action_field)
         self.player_tokens = PlayerTokens(screen,action_field)
 
     def display(self):
@@ -19,3 +19,4 @@ class Player:
 
     def click_events(self):
         self.player_tokens.click_events()
+        self.player_cards.click_events()

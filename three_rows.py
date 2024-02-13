@@ -25,6 +25,7 @@ class ThreeRows:
 
 
 
+
     def change_cards_coordinates_to_correct(self):
         for row in self.rows.values():
             row.change_cards_coordinates_to_correct()
