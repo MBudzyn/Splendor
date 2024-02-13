@@ -58,6 +58,9 @@ class ActionField:
         for card in self.cards_on_action_field:
             card.display()
 
+    def get_player_tokens_on_action_field(self):
+        return self.player_tokens_on_action_field
+
 
     def clear_player_tokens_on_action_field(self):
         self.player_tokens_on_action_field = []
@@ -81,6 +84,9 @@ class ActionField:
     def remove_and_get_card(self):
         if self.cards_on_action_field:
             return self.cards_on_action_field.pop()
+    def get_card(self):
+        if self.cards_on_action_field:
+            return self.cards_on_action_field[-1]
 
     def remove_and_return_all_game_tokens(self):
         tokens = self.game_tokens_on_action_field

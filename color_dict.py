@@ -12,6 +12,10 @@ class ColorDict:
     def get_sum_of_tokens(self):
         return sum(self.dict_with_colors.values())
 
+    def update_by_color_table(self, color_table):
+        for color in color_table:
+            self.dict_with_colors[color] += 1
+
     def increase_color_value(self, color, value):
         self.dict_with_colors[color] += value
 
@@ -20,5 +24,8 @@ class ColorDict:
 
     def increse_by_color_dict(self,second_color_dict):
         for key, value in second_color_dict.get_dict:
+            self.increase_color_value(key,value)
+    def increase_by_dict(self,second_dict):
+        for key, value in second_dict.items():
             self.increase_color_value(key,value)
 

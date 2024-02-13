@@ -2,6 +2,7 @@ from card import Card
 from point import Point
 from action_field import ActionField
 from Global import *
+from color_dict import ColorDict
 
 
 class PlayerCards:
@@ -18,9 +19,26 @@ class PlayerCards:
     def update_points_sum(self, card: Card):
         self.points_sum += card.points
 
+    def can_buy_card(self, card: Card):
+        missing_tokens = 0
+        new_color_dict = ColorDict(True)
+        new_color_dict.update_by_color_table(self.action_field.get_player_tokens_on_action_field())
+        new_color_dict.increase_by_dict(self.discount_dict)
+        for key, value in card.cost.items():
+            new_color_dict.set_value(key, new_color_dict.get_dict()[key] - value)
+        for value in new_color_dict.get_dict().values():
+            if value < 0:
+                missing_tokens -= value
+        if missing_tokens <= new_color_dict.get_dict()["special"]:
+            return True
+        return False
+
+
     def buy_card_click_event(self):
         if self.action_field.buy_card_button.is_colliding_with_mouse():
-            self.add_cart(self.action_field.remove_and_get_card())
+            if self.can_buy_card(self.action_field.get_card()):
+                self.add_cart(self.action_field.remove_and_get_card())
+                self.action_field.remove_and_return_all_player_tokens()
 
     def add_cart(self, card: Card):
         if card is not None:
@@ -45,6 +63,7 @@ class PlayerCards:
         self.buy_card_click_event()
 
     def update(self):
-        for cards in self.cards_container.values():
-            for card in cards:
-                card.update()
+        pass
+        # for cards in self.cards_container.values():
+        #     for card in cards:
+        #         card.update()
