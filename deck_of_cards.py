@@ -23,17 +23,17 @@ class DeckOfCards:
                      self.lvl, 0, color))
         self.add_card(
             Card(Point((200, 200)), f"graphics/blue_card1.png", f"graphics/card_frame.png", self.screen,
-                 self.lvl, 0, "blue"))
+                 self.lvl, 0, "blue",{"red": 0, "blue": 1, "black": 2, "white": 3, "green": 1}))
         self.add_card(
             Card(Point((200, 200)), f"graphics/green_card1.png", f"graphics/card_frame.png", self.screen,
-                 self.lvl, 0, "green"))
+                 self.lvl, 0, "green",{"red": 2, "blue": 1, "black": 2, "white": 1, "green": 0}))
         self.add_card(
             Card(Point((200, 200)), f"graphics/white_card1.png", f"graphics/card_frame.png", self.screen,
-                 self.lvl, 0, "white"))
+                 self.lvl, 0, "white",{"red": 1, "blue": 1, "black": 2, "white": 0, "green": 1}))
         self.add_card(
             Card(Point((200, 200)), f"graphics/red_card1.png", f"graphics/card_frame.png", self.screen,
-                 self.lvl, 0, "red"))
-        
+                 self.lvl, 0, "red",{"red": 1, "blue": 1, "black": 2, "white": 1, "green": 0}))
+
 
 
 
