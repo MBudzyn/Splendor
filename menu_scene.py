@@ -25,6 +25,7 @@ class MenuScene(Scene):
         self.game_field = Button(Point((350,425)), "graphics/game_field.png", screen)
         self.player_field = Button(Point((1150, 625)), "graphics/player_field.png", screen)
         self.action_field_d = Button(Point((1150, 250)), "graphics/action_field.png", screen)
+        self.buy_card_field = Button(Point((950, 250)), "graphics/buy_card_field.png", screen)
         self.three_rows_of_cards = ThreeRows(RowOfCards(1, screen, self.action_field, self.first_deck_of_cards),
                                              RowOfCards(2, screen, self.action_field, self.second_deck_of_cards),
                                              RowOfCards(3, screen, self.action_field, self.third_deck_of_cards),self.action_field)
@@ -50,6 +51,7 @@ class MenuScene(Scene):
         self.game_field.display()
         self.player_field.display()
         self.action_field_d.display()
+        self.buy_card_field.display()
         self.action_field.display()
         self.three_rows_of_cards.display()
         self.six_stacks_of_tokens.display()
