@@ -8,7 +8,7 @@ from color_dict import ColorDict
 class PlayerCards:
     def __init__(self, action_field: ActionField):
         self.cards_container: dict[str, list[Card]] = {"red": [], "blue": [], "black": [], "white": [], "green": []}
-        self.dict_with_x_coordinates = {"red": 1400, "blue": 1250, "black": 1100, "white": 950, "green": 800}
+        self.dict_with_x_coordinates = {"red": 1375, "blue": 1225, "black": 1075, "white": 925, "green": 775}
         self.points_sum = 0
         self.discount_dict = {"red": 0, "blue": 0, "black": 0, "white": 0, "green": 0}
         self.action_field = action_field
