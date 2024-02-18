@@ -7,18 +7,21 @@ class Player:
         self.screen = screen
         self.player_cards = PlayerCards(action_field)
         self.player_tokens = PlayerTokens(screen,action_field)
+        self.is_turn = False
 
     def display(self):
         self.player_cards.display()
         self.player_tokens.display()
 
+    def set_turn(self, is_turn):
+        self.is_turn = is_turn
+
+    def get_turn(self):
+        return self.is_turn
+
     def update(self):
         self.player_cards.update()
         self.player_tokens.update()
-
-
-
-
 
     def click_events(self):
         self.player_tokens.click_events()
