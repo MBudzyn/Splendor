@@ -78,6 +78,11 @@ class GameTokens:
             for color in self.action_field.remove_and_return_all_player_tokens():
                 self.add_token(color)
 
+    def destroy_player_tokens_click_event(self):
+        if self.action_field.destroy_player_tokens_button.is_colliding_with_mouse():
+            for color in self.action_field.remove_and_return_all_player_tokens():
+                self.add_token(color)
+
     def clean_field_click_event(self):
         if self.action_field.clean_field_button.is_colliding_with_mouse():
             tokens = self.action_field.remove_and_return_all_game_tokens()
