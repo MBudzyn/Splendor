@@ -87,7 +87,8 @@ class GameTokens:
         self.destroy_player_tokens_click_event()
 
     def destroy_player_tokens_click_event(self):
-        if self.action_field.destroy_player_tokens_button.is_colliding_with_mouse():
+        if self.action_field.destroy_player_tokens_button.is_colliding_with_mouse()\
+           and self.action_field.cards_on_action_field == []:
             for color in self.action_field.remove_and_return_all_player_tokens():
                 self.add_token(color)
 
