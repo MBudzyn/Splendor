@@ -24,12 +24,20 @@ class ActionField:
         self.fill_rows_button = Button(Point(FILL_ROWS_BUTTON_COORDINATES), "graphics/fill_rows.png", screen,
                                        "graphics/clear_alt_button.png")
 
+        self.actual_turn = 1
+
     def update(self):
         self.take_tokens_button.update()
         self.buy_card_button.update()
         self.reserve_card_button.update()
         self.fill_rows_button.update()
         self.destroy_player_tokens_button.update()
+
+    def get_actual_turn(self):
+        return self.actual_turn
+
+    def next_turn(self):
+        self.actual_turn += 1
 
     def display_player_tokens(self):
         table = []

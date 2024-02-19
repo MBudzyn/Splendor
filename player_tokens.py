@@ -73,6 +73,9 @@ class PlayerTokens:
             if self.get_sum_of_tokens() + self.action_field.get_sum_of_tokens() <= 10:
                 for color in self.action_field.remove_and_return_all_game_tokens():
                     self.add_token(color)
+                self.action_field.next_turn()
+
+
 
     def reserve_card_click_event(self):
         if self.action_field.reserve_card_button.is_colliding_with_mouse():

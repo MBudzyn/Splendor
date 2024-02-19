@@ -39,6 +39,7 @@ class PlayerCards:
             if self.can_buy_card(self.action_field.get_card()):
                 self.add_cart(self.action_field.remove_and_get_card())
                 self.action_field.remove_and_return_all_player_tokens()
+                self.action_field.next_turn()
 
     def add_cart(self, card: Card):
         if card is not None:
