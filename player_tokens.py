@@ -75,7 +75,7 @@ class PlayerTokens:
             self.tokens.increase_color_value(color, -1)
 
     def take_tokens_click_event(self):
-        if self.action_field.take_tokens_button.is_colliding_with_mouse():
+        if self.action_field.take_tokens_button.is_colliding_with_mouse() and self.action_field.cards_on_action_field == []:
             if self.get_sum_of_tokens() + self.action_field.get_sum_of_tokens() <= 10 and self.action_field.game_tokens_can_be_get():
                 for color in self.action_field.remove_and_return_all_game_tokens():
                     self.add_token(color)

@@ -15,8 +15,9 @@ class PlayerReservedCards:
     def reserve_card_click_event(self):
         if self.action_field.reserve_card_button.is_colliding_with_mouse():
             if self.can_be_added() and self.action_field.card_can_be_get():
-                self.add_card(self.action_field.remove_and_get_card())
-                self.action_field.next_turn()
+                if not self.action_field.get_card().is_reserved:
+                    self.add_card(self.action_field.remove_and_get_card())
+                    self.action_field.next_turn()
 
     def add_card(self, card: Card):
         if card is not None and self.can_be_added():
