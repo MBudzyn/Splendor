@@ -14,14 +14,29 @@ class PlayerReservedCards:
 
     def reserve_card_click_event(self):
         if self.action_field.reserve_card_button.is_colliding_with_mouse():
-            self.add_card(self.action_field.remove_and_get_card())
+            if self.can_be_added():
+                self.add_card(self.action_field.remove_and_get_card())
+                self.action_field.next_turn()
+
 
     def add_card(self, card: Card):
         if card is not None and self.can_be_added():
-            card.set_coordinates(Point(PLAYER_RESERVED_CARDS_COORDINATES[len(self.cards)]))
+            card.set_reserved(True)
             self.cards.append(card)
 
+    def clean_field_click_event(self):
+        if self.action_field.clean_field_button.is_colliding_with_mouse():
+            card = self.action_field.get_card()
+            if card is not None and card.get_reserved():
+                self.add_card(self.action_field.remove_and_get_card())
+
+
+
+
+
     def display(self):
+        for i in range(len(self.cards)):
+            self.cards[i].set_coordinates(Point(PLAYER_RESERVED_CARDS_COORDINATES[i]))
         for card in self.cards:
             card.display()
 
@@ -40,6 +55,7 @@ class PlayerReservedCards:
             self.remove_card(card)
 
     def click_events(self):
+        self.clean_field_click_event()
         self.reserve_card_click_event()
         for card in self.cards:
             if card.card_button.is_colliding_with_mouse():

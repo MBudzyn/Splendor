@@ -19,7 +19,9 @@ class ThreeRows:
 
     def clean_field_click_event(self):
         if self.action_field.clean_field_button.is_colliding_with_mouse():
-            self.add_card_to_correct_row(self.action_field.remove_and_get_card())
+            card = self.action_field.get_card()
+            if card is not None and not card.get_reserved():
+                self.add_card_to_correct_row(self.action_field.remove_and_get_card())
 
 
     def click_events_on_action_field(self):
