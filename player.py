@@ -21,12 +21,6 @@ class Player:
         self.player_reserved_cards.display()
         self.screen.blit(self.text, (900,550))
 
-    def set_turn(self, is_turn):
-        self.is_turn = is_turn
-
-    def get_turn(self):
-        return self.is_turn
-
     def update(self):
         self.player_cards.update()
         self.player_tokens.update()
