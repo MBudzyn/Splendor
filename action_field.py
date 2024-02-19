@@ -13,8 +13,9 @@ class ActionField:
         self.player_tokens_on_action_field: list[Token] = []
         self.buy_card_button = Button(Point(BUY_CARD_BUTTON_COORDINATES), "graphics/buy_card.png", screen,
                                       "graphics/clear_alt_button.png")
-        self.clean_field_button = Button(Point(CLEAN_FIELD_BUTTON_COORDINATES), "graphics/clean_field_button.png", screen,
-                                      "graphics/clear_alt_button.png")
+        self.clean_field_button = Button(Point(CLEAN_FIELD_BUTTON_COORDINATES), "graphics/clean_field_button.png",
+                                         screen,
+                                         "graphics/clear_alt_button.png")
         self.take_tokens_button = Button(Point(TAKE_TOKENS_BUTTON_COORDINATES), "graphics/take_tokens.png", screen,
                                          "graphics/clear_alt_button.png")
         self.reserve_card_button = Button(Point(RESERVE_CARD_BUTTON_COORDINATES), "graphics/reserve_card.png", screen,

@@ -55,8 +55,20 @@ class GameTokens:
     def add_token_to_action_field(self, color):
         self.action_field.add_color_to_game_tokens(color)
 
-    def if_possible_place_in_action_field(self, color):
+    def is_possible_to_place_second(self, color):
+        if len(self.action_field.game_tokens_on_action_field) != 1 \
+                or color != self.action_field.game_tokens_on_action_field[0] \
+                or self.tokens.get_dict()[color] >= 3:
+            return True
+        return False
+
+    def is_possible_to_place_in_action_field(self, color):
         if self.is_possible_to_remove_token(color) and self.action_field.game_token_can_be_added(color):
+            return self.is_possible_to_place_second(color)
+        return False
+
+    def if_possible_place_in_action_field(self, color):
+        if self.is_possible_to_place_in_action_field(color):
             self.add_token_to_action_field(color)
             self.remove_token(color)
 
