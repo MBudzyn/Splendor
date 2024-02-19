@@ -1,5 +1,4 @@
 from row_of_cards_in_ply import RowOfCards
-from card import Card
 from action_field import ActionField
 
 

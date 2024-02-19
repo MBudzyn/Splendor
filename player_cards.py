@@ -38,7 +38,7 @@ class PlayerCards:
 
     def buy_card_click_event(self):
         if self.action_field.buy_card_button.is_colliding_with_mouse():
-            if self.can_buy_card(self.action_field.get_card()):
+            if self.can_buy_card(self.action_field.get_card()) and self.action_field.game_tokens_on_action_field == []:
                 self.add_cart(self.action_field.remove_and_get_card())
                 self.action_field.remove_and_return_all_player_tokens()
                 self.action_field.next_turn()

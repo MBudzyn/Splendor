@@ -92,7 +92,7 @@ class ActionField:
         self.game_tokens_on_action_field.append(color)
 
     def player_token_can_be_added(self):
-        if len(self.game_tokens_on_action_field) == 0:
+        if not self.game_tokens_on_action_field:
             return True
         return False
 
@@ -128,6 +128,10 @@ class ActionField:
         return len(self.game_tokens_on_action_field)
 
     def game_token_can_be_added(self, color):
+        if self.player_tokens_on_action_field:
+            return False
+        if self.cards_on_action_field:
+            return False
         if len(self.player_tokens_on_action_field) > 0:
             return False
         if len(self.game_tokens_on_action_field) > 2:
@@ -145,7 +149,7 @@ class ActionField:
 
     def card_can_be_added(self):
         if not self.cards_on_action_field:
-            if self.tokens_on_action_field == [] or self.tokens_on_action_field[0].color == "special":
+            if self.game_tokens_on_action_field == [] or self.game_tokens_on_action_field[0] == "special":
                 return True
         return False
 
