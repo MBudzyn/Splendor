@@ -39,6 +39,12 @@ class PlayerTokens:
     def get_sum_of_tokens(self):
         return self.tokens.get_sum_of_tokens()
 
+    def clean_field_click_event(self):
+        if self.action_field.clean_field_button.is_colliding_with_mouse():
+            tokens = self.action_field.remove_and_return_all_player_tokens()
+            for color in tokens:
+                self.add_token(color)
+
     def update(self):
         self.set_correct_image_to_stacks()
         for stack_button in self.stacks_buttons.values():
@@ -87,6 +93,7 @@ class PlayerTokens:
     def click_events(self):
         self.reserve_card_click_event()
         self.take_tokens_click_event()
+        self.clean_field_click_event()
         for color, stack_button in self.stacks_buttons.items():
             if stack_button.is_colliding_with_mouse():
                 self.if_possible_place_in_action_field(color)

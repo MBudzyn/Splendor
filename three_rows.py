@@ -17,11 +17,16 @@ class ThreeRows:
             self.rows[card.lvl].add_card(card)
             self.change_cards_coordinates_to_correct()
 
+    def clean_field_click_event(self):
+        if self.action_field.clean_field_button.is_colliding_with_mouse():
+            self.add_card_to_correct_row(self.action_field.remove_and_get_card())
+
+
     def click_events_on_action_field(self):
+        self.clean_field_click_event()
         if self.action_field.destroy_player_tokens_button.is_colliding_with_mouse():
             self.add_card_to_correct_row(self.action_field.remove_and_get_card())
-        if self.action_field.fill_rows_button.is_colliding_with_mouse():
-            self.fill_from_decks()
+
 
 
 
