@@ -1,5 +1,6 @@
 from player_cards import PlayerCards
 from player_tokens import PlayerTokens
+from player_reserved_cards import PlayerReservedCards
 
 
 class Player:
@@ -8,6 +9,7 @@ class Player:
         self.screen = screen
         self.player_cards = PlayerCards(action_field)
         self.player_tokens = PlayerTokens(screen, action_field)
+        self.player_reserved_cards = PlayerReservedCards(action_field)
         self.is_turn = False
         import pygame
         self.font = pygame.font.SysFont("Comic Sans MS", 70)
@@ -16,6 +18,7 @@ class Player:
     def display(self):
         self.player_cards.display()
         self.player_tokens.display()
+        self.player_reserved_cards.display()
         self.screen.blit(self.text, (900,550))
 
     def set_turn(self, is_turn):
@@ -27,7 +30,9 @@ class Player:
     def update(self):
         self.player_cards.update()
         self.player_tokens.update()
+        self.player_reserved_cards.update()
 
     def click_events(self):
         self.player_tokens.click_events()
         self.player_cards.click_events()
+        self.player_reserved_cards.click_events()
