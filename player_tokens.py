@@ -76,7 +76,7 @@ class PlayerTokens:
 
     def take_tokens_click_event(self):
         if self.action_field.take_tokens_button.is_colliding_with_mouse():
-            if self.get_sum_of_tokens() + self.action_field.get_sum_of_tokens() <= 10:
+            if self.get_sum_of_tokens() + self.action_field.get_sum_of_tokens() <= 10 and self.action_field.game_tokens_can_be_get():
                 for color in self.action_field.remove_and_return_all_game_tokens():
                     self.add_token(color)
                 self.action_field.next_turn()

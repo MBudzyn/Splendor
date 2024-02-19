@@ -75,6 +75,12 @@ class ActionField:
     def clear_player_tokens_on_action_field(self):
         self.player_tokens_on_action_field = []
 
+    def card_can_be_get(self):
+        return self.cards_on_action_field != []
+
+    def game_tokens_can_be_get(self):
+        return self.game_tokens_on_action_field != []
+
     def click_events(self):
         pass
 
