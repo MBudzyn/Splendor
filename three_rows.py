@@ -33,6 +33,8 @@ class ThreeRows:
 
 
 
+
+
     def change_cards_coordinates_to_correct(self):
         for row in self.rows.values():
             row.change_cards_coordinates_to_correct()
@@ -44,6 +46,8 @@ class ThreeRows:
     def update(self):
         for row in self.rows.values():
             row.update()
+        if not self.action_field.cards_on_action_field:
+            self.fill_from_decks()
 
     def click_events(self):
         self.click_events_on_action_field()

@@ -40,6 +40,7 @@ class ActionField:
     def next_turn(self):
         self.actual_turn += 1
 
+
     def display_player_tokens(self):
         table = []
         i = 0
