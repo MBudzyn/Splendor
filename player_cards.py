@@ -20,6 +20,8 @@ class PlayerCards:
         self.points_sum += card.points
 
     def can_buy_card(self, card: Card):
+        if card is None:
+            return False
         missing_tokens = 0
         new_color_dict = ColorDict(True)
         new_color_dict.update_by_color_table(self.action_field.get_player_tokens_on_action_field())
